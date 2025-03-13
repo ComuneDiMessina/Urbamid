@@ -1,0 +1,8 @@
+[ 
+	{"name": "Università (ISTR-UNIV)", "code": "001"}, 
+	{"name": "Scuola pubblica (ISTR-SPUB)", "code": "002"}, 
+	{"name": "Scuola privata (ISTR-SPRI)", "code": "003"}, 
+	{"name": "Biblioteca (ISTR-BIBL)", "code": "004"}, 
+	{"name": "Collegio (ISTR-COLL)", "code": "005"}, 
+	{"name": "Altro (ISTR-ALTR)", "code": "006"}
+]

@@ -1,0 +1,9 @@
+[ 
+	{"name": "1. Superfici artificali", "code": "001"}, 
+	{"name": "1.1. Zone Urbanizzate di tipo residenziale", "code": "002"}, 
+	{"name": "1.2. Zone idustriali, commerciali ed infrastrutturali", "code": "003"}, 
+	{"name": "2. Sueprfici agricole utilizzate", "code": "004"}, 
+	{"name": "3. Territori boscati e ambienti semi-naturali", "code": "005"}, 
+	{"name": "4. Zone umide", "code": "006"}, 
+	{"name": "A5. Corpi idrici", "code": "007"}
+]

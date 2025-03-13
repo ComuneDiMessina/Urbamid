@@ -1,0 +1,59 @@
+package it.eng.tz.urbamid.toponomastica.service;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import it.eng.tz.urbamid.toponomastica.exception.ToponomasticaServiceException;
+import it.eng.tz.urbamid.toponomastica.persistence.model.Patrimonialita;
+import it.eng.tz.urbamid.toponomastica.persistence.repositories.JpaRepositoryPatrimonialita;
+import it.eng.tz.urbamid.toponomastica.web.dto.PatrimonialitaDTO;
+import it.eng.tz.urbamid.toponomastica.web.dto.converter.PatrimonialitaConverter;
+
+@Service
+public class PatrimonialitaServiceImpl implements PatrimonialitaService{
+
+	private static final Logger logger = LoggerFactory.getLogger(PatrimonialitaServiceImpl.class.getName());
+
+	private static final String START = "START >>> {}";
+	private static final String END = "END >>> {}";
+	private static final String DEBUG_INFO_END = "{} >>> numero di risultati estratti: {}";
+	private static final String ERROR = "{} >>> {}";
+	
+	@Autowired
+	private JpaRepositoryPatrimonialita repository;
+	
+	@Autowired
+	private PatrimonialitaConverter converter;
+	
+	@Override
+	public List<PatrimonialitaDTO> findAll() throws ToponomasticaServiceException {
+		
+		String idLog = "findAll";
+		
+		try {
+			
+			logger.info(START, idLog);
+			
+			List<Patrimonialita> result = repository.findAll(new Sort(Sort.Direction.ASC, "descrizione"));
+
+			logger.debug(DEBUG_INFO_END, idLog, result.size());
+
+			return converter.toDto(result);
+			
+		} catch (Exception e) {
+			
+			logger.error(ERROR, idLog, e.getMessage());
+			throw new ToponomasticaServiceException("Non è stato possibile trovare eliminare la patrimonialità");
+			
+		} finally {
+			
+			logger.info(END, idLog);
+			
+		}
+	}
+}

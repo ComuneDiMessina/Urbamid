@@ -1,0 +1,75 @@
+{"layer": {
+		"layer0": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_pericolosita.map",
+			"params": [{"LAYERS": "RN.PAI.PERICOLOSITA.FRANA_01"}],
+			"serverType": "geoserver"
+		}],
+		"layer1": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_pericolosita.map",
+			"params": [{"LAYERS":"RN.PAI.PERICOLOSITA.ALLUVIONE"}],
+			"serverType": "geoserver"
+		}],
+		"layer2": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_pericolosita.map",
+			"params": [{"LAYERS":"RN.PAI.PERICOLOSITA.FRANA_02"}],
+			"serverType": "geoserver"
+		}],
+		"layer3": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_rischio.map",
+			"params": [{"LAYERS":"RN.PAI.RISCHIO.FRANA_01","CRS":"EPSG:4326"}],
+			"serverType": "geoserver"
+		}],
+		"layer4": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_rischio.map",
+			"params": [{"LAYERS":"RN.PAI.RISCHIO.ALLUVIONE"}],
+			"serverType": "geoserver"
+		}],
+		"layer5": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/PAI_rischio.map",
+			"params": [{"LAYERS":"RN.PAI.RISCHIO.FRANA_02"}],
+			"serverType": "geoserver"
+		}],
+		"layer6": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.PIFF"}],
+			"serverType": "geoserver"
+		}],
+		"layer7": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.LINEARI"}],
+			"serverType": "geoserver"
+		}],
+		"layer8": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.DIREZIONI"}],
+			"serverType": "geoserver"
+		}],
+		"layer9": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.AREE.FRANE.DIFFUSE"}],
+			"serverType": "geoserver"
+		}],
+		"layer10": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.DGPV"}],
+			"serverType": "geoserver"
+		}],
+		"layer11": [{
+			"type":"WMS",
+			"url": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Catalogo_Frane.map",
+			"params": [{"LAYERS":"RN.CATALOGO_FRANE.POLIGONALI"}],
+			"serverType": "geoserver"
+		}]
+	}
+}

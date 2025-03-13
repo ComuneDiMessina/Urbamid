@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+  <name>JOB IMPORT FABBRICATI</name>
+    <description/>
+    <extended_description/>
+    <job_version/>
+    <job_status>0</job_status>
+  <directory>&#47;</directory>
+  <created_user>-</created_user>
+  <created_date>2019&#47;05&#47;27 18:20:16.893</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2019&#47;05&#47;27 18:20:16.893</modified_date>
+    <parameters>
+        <parameter>
+            <name>KETTLE_REPOSITORY</name>
+            <default_value>/home/fesposit/Lavoro/git_repository/URBAMID/URBAMID/IMPORT_CATASTO/JOB_GEOKETTLE</default_value>
+            <description>null</description>
+        </parameter>
+    </parameters>
+    <slaveservers>
+    </slaveservers>
+  <logconnection/>
+  <logtable/>
+  <size_limit_lines/>
+   <use_batchid>N</use_batchid>
+   <pass_batchid>N</pass_batchid>
+   <use_logfield>N</use_logfield>
+   <shared_objects_file/>
+  <entries>
+    <entry>
+      <name>ESTRAI FILE IMPORT FABBRICATI</name>
+      <description/>
+      <type>UNZIP</type>
+      <zipfilename>${BASE_JOB_DATA_DIRECTORY}${FAB_SUB_DIRECTORY_IMPORT}</zipfilename>
+      <wildcard/>
+      <wildcardexclude/>
+      <targetdirectory>${BASE_JOB_DATA_DIRECTORY}${FAB_DIRECTORY_MANAGE_PATH}${FAB_SUB_DIRECTORY_UNZIP}</targetdirectory>
+      <movetodirectory/>
+      <afterunzip>0</afterunzip>
+      <addfiletoresult>N</addfiletoresult>
+      <isfromprevious>N</isfromprevious>
+      <adddate>N</adddate>
+      <addtime>N</addtime>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <rootzip>N</rootzip>
+      <createfolder>Y</createfolder>
+      <nr_limit>1</nr_limit>
+      <wildcardSource>.*\.zip</wildcardSource>
+      <success_condition>success_if_no_errors</success_condition>
+      <iffileexists>OVERWRITE</iffileexists>
+      <create_move_to_directory>N</create_move_to_directory>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>262</xloc>
+      <yloc>90</yloc>
+      </entry>
+    <entry>
+      <name>START</name>
+      <description/>
+      <type>SPECIAL</type>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>34</xloc>
+      <yloc>90</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT FABBRICATI TERMINATO</name>
+      <description>Successo</description>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>950</xloc>
+      <yloc>228</yloc>
+      </entry>
+    <entry>
+      <name>TRASFORMATA FILE .FAB</name>
+      <description>Trasformazione</description>
+      <type>TRANS</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;TRASFORMATA_FAB_FILE_FAB.ktr</filename>
+      <transname>TRASFORMATA_FAB_FILE_FAB</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>413</xloc>
+      <yloc>90</yloc>
+      </entry>
+    <entry>
+      <name>ESTRAZIONE FALLITA</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Si è verificato un errore nell&apos;unzip dei file zip per i FABBRICATI.</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>262</xloc>
+      <yloc>233</yloc>
+      </entry>
+    <entry>
+      <name>TABELLE FABBRICATI FALLITE</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Si è verificato un errore nel task che esegue l&apos;import su DB dei dati .TER</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>414</xloc>
+      <yloc>233</yloc>
+      </entry>
+    <entry>
+      <name>TRASFORMATA FILE .SOG</name>
+      <description>Trasformazione</description>
+      <type>TRANS</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;TRASFORMATA_FAB_FILE_SOG.ktr</filename>
+      <transname>TRASFORMATA_FAB_FILE_SOG</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>Y</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>583</xloc>
+      <yloc>90</yloc>
+      </entry>
+    <entry>
+      <name>TABELLE SOGGETTI FALLITE</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Si è verificato un errore nel task che esegue l&apos;import su DB dei dati .SOG</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>585</xloc>
+      <yloc>229</yloc>
+      </entry>
+    <entry>
+      <name>TRASFORMATA FILE .TIT</name>
+      <description>Trasformazione</description>
+      <type>TRANS</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;TRASFORMATA_FAB_FILE_TIT.ktr</filename>
+      <transname>TRASFORMATA_FAB_FILE_TIT</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>Y</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>752</xloc>
+      <yloc>91</yloc>
+      </entry>
+    <entry>
+      <name>RIMUOVI FILE TEMPORANEI FABBRICATI</name>
+      <description>Cancella i file</description>
+      <type>DELETE_FILES</type>
+      <arg_from_previous>N</arg_from_previous>
+      <include_subfolders>Y</include_subfolders>
+      <fields>
+        <field>
+          <name>${BASE_JOB_DATA_DIRECTORY}${FAB_DIRECTORY_MANAGE_PATH}${FAB_SUB_DIRECTORY_IMPORT}</name>
+          <filemask/>
+        </field>
+        <field>
+          <name>${BASE_JOB_DATA_DIRECTORY}${FAB_DIRECTORY_MANAGE_PATH}${FAB_SUB_DIRECTORY_UNZIP}</name>
+          <filemask/>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>947</xloc>
+      <yloc>91</yloc>
+      </entry>
+    <entry>
+      <name>TABELLE TITOLARITA FALLITE</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Si è verificato un errore nel task che esegue l&apos;import su DB dei dati .TIT</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>755</xloc>
+      <yloc>230</yloc>
+      </entry>
+    <entry>
+      <name>INIZIO JOB</name>
+      <description>Scrivi nel log</description>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>Job di import fabbricati AVVIATO!</logmessage>
+      <loglevel>Nothing</loglevel>
+      <logsubject>IMPORT FABBRICATI</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>134</xloc>
+      <yloc>90</yloc>
+      </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>ESTRAI FILE IMPORT FABBRICATI</from>
+      <to>ESTRAZIONE FALLITA</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .FAB</from>
+      <to>TABELLE FABBRICATI FALLITE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .FAB</from>
+      <to>TRASFORMATA FILE .SOG</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .SOG</from>
+      <to>TABELLE SOGGETTI FALLITE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .SOG</from>
+      <to>TRASFORMATA FILE .TIT</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .TIT</from>
+      <to>TABELLE TITOLARITA FALLITE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .TIT</from>
+      <to>RIMUOVI FILE TEMPORANEI FABBRICATI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>RIMUOVI FILE TEMPORANEI FABBRICATI</from>
+      <to>JOB IMPORT FABBRICATI TERMINATO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>ESTRAI FILE IMPORT FABBRICATI</from>
+      <to>TRASFORMATA FILE .FAB</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>INIZIO JOB</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>INIZIO JOB</from>
+      <to>ESTRAI FILE IMPORT FABBRICATI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRASFORMATA FILE .TIT</from>
+      <to>JOB IMPORT FABBRICATI TERMINATO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+    <notepad>
+      <note>Caricamento dei dati censuari relativi i file dei FABBRICATI *.prm *.fab *.sog *.tit</note>
+      <xloc>25</xloc>
+      <yloc>20</yloc>
+      <width>435</width>
+      <heigth>23</heigth>
+    </notepad>
+  </notepads>
+</job>

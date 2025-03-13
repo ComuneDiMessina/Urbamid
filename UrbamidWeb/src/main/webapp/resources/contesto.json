@@ -1,0 +1,20 @@
+{
+	"idContesto":"R_201702161900",
+	"tipo":"Reale - totale",
+	"desc":"descrizione",
+	"ds":"D1 - Distretto Nord",
+	"c":"Tutti i centri",
+	"segmentazione": "10",
+	"timestamp": "14/04/2017 - 17:42",
+	"prof":[
+		["1950","2000","1"], 
+		["2001","2005","2"],
+		["2006","2010","1.5"],
+		["2011","2050","2.5"]
+	],
+	"rive":[
+		["1950","1980","Nastri"], 
+		["1981","1990","Bitume"],
+		["1991","2050","Polietilene"]
+	]
+}

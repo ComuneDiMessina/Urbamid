@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>TRASFORMATA_SET_VARIABILI_DA_RPM</name>
+    <description/>
+    <extended_description/>
+    <trans_version>1</trans_version>
+    <trans_status>1</trans_status>
+    <directory>&#47;</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <read/>
+      <write/>
+      <input/>
+      <output/>
+      <update/>
+      <rejected/>
+      <connection/>
+      <table/>
+      <step_performance_table/>
+      <use_batchid>Y</use_batchid>
+      <use_logfield>N</use_logfield>
+      <size_limit_lines/>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+  <modified_user>-</modified_user>
+  <modified_date>2020&#47;02&#47;14 15:31:53.739</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>CONNESSIONE_URBAMID</name>
+    <server>${DATABASE_HOST}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${DATABASE_NAME}</database>
+    <port>${DATABASE_PORT}</port>
+    <username>${DATABASE_USER}</username>
+    <password>Encrypted 2be98afc86aa7f2e4bb16bd64d980aac9</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${DATABASE_PORT}</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+  <hop> <from>SCRIVI FILE SUL LOG (FAB)</from><to>RPM INPUT FABBRICATI</to><enabled>Y</enabled> </hop>  <hop> <from>RPM INPUT FABBRICATI</from><to>IMPOSTA VARIABILI PER SCRIPT SQL FABBRICATI</to><enabled>Y</enabled> </hop>  <hop> <from>PRELEVA .PRM FABBRICATI</from><to>SCRIVI FILE SUL LOG (FAB)</to><enabled>Y</enabled> </hop>  <hop> <from>SCRIVI FILE SUL LOG (TER)</from><to>RPM INPUT TERRENI</to><enabled>Y</enabled> </hop>  <hop> <from>RPM INPUT TERRENI</from><to>IMPOSTA VARIABILI PER SCRIPT SQL TERRENI</to><enabled>Y</enabled> </hop>  <hop> <from>PRELEVA .RPM TERRENI</from><to>SCRIVI FILE SUL LOG (TER)</to><enabled>Y</enabled> </hop>  <hop> <from>PRELEVA .PRM FABBRICATI</from><to>CONTROLLA SE LO STREAM E&apos; VUOTO (FAB)</to><enabled>Y</enabled> </hop>  <hop> <from>CONTROLLA SE LO STREAM E&apos; VUOTO (FAB)</from><to>IMPOSTA VALORI DI DEFAULT PER SCRIPT SQL (FAB)</to><enabled>Y</enabled> </hop>  <hop> <from>PRELEVA .RPM TERRENI</from><to>CONTROLLA SE LO STREAM E&apos; VUOTO (TER)</to><enabled>Y</enabled> </hop>  <hop> <from>CONTROLLA SE LO STREAM E&apos; VUOTO (TER)</from><to>IMPOSTA VALORI DI DEFAULT PER SCRIPT SQL (TER)</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>PRELEVA .PRM FABBRICATI</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filter>
+      <filterfiletype>only_files</filterfiletype>
+    </filter>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field/>
+    <filename_Field/>
+    <wildcard_Field/>
+    <limit>1</limit>
+    <file>
+      <name>${BASE_JOB_DATA_DIRECTORY}${FAB_DIRECTORY_MANAGE_PATH}${FAB_SUB_DIRECTORY_UNZIP}</name>
+      <filemask>.*\.PRM</filemask>
+      <file_required/>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>134</xloc>
+      <yloc>49</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>PRELEVA .RPM TERRENI</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filter>
+      <filterfiletype>only_files</filterfiletype>
+    </filter>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field/>
+    <filename_Field/>
+    <wildcard_Field/>
+    <limit>1</limit>
+    <file>
+      <name>${BASE_JOB_DATA_DIRECTORY}${TER_DIRECTORY_MANAGE_PATH}${TER_SUB_DIRECTORY_UNZIP}</name>
+      <filemask>.*\.PRM</filemask>
+      <file_required/>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>132</xloc>
+      <yloc>238</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>SCRIVI FILE SUL LOG (FAB)</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+    <fields>
+      <field>
+        <name>filename</name>
+        </field>
+      <field>
+        <name>exists</name>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>336</xloc>
+      <yloc>49</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RPM INPUT FABBRICATI</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#47;opt&#47;IMPORT_CATASTO&#47;DATI&#47;ATTUALITA&#47;MANAGE&#47;FABBRICATI&#47;unzip&#47;F1581550380.PRM</filename>
+    <filename_field>filename</filename_field>
+    <rownum_field>riga</rownum_field>
+    <include_filename>N</include_filename>
+    <separator>\n</separator>
+    <enclosure/>
+    <header>N</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <encoding>UTF-8</encoding>
+    <fields>
+      <field>
+        <name>contenuto</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>100000</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>520</xloc>
+      <yloc>49</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>IMPOSTA VARIABILI PER SCRIPT SQL FABBRICATI</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var split = contenuto.split(&quot;:&quot;);
+var valoreVariabile = trim(split[1]);
+
+if(riga == &quot;1&quot; || riga == 1){
+	&#47;&#47;Alert(&apos;COMUNE: &apos; + valoreVariabile);
+	setVariable(&apos;FAB_COMUNE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;2&quot; || riga == 2){
+	&#47;&#47;Alert(&apos;DATA_RICHIESTA: &apos; + valoreVariabile);
+	setVariable(&apos;FAB_DATA_RICHIESTA&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;3&quot; || riga == 3){
+	&#47;&#47;Alert(&apos;DATA_ELABORAZIONE: &apos; + valoreVariabile);
+	setVariable(&apos;FAB_DATA_ELABORAZIONE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;4&quot; || riga == 4){
+	&#47;&#47;Alert(&apos;TIPO_ESTRAZIONE: &apos; + valoreVariabile);
+	setVariable(&apos;FAB_TIPO_ESTRAZIONE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;5&quot; || riga == 5){
+	&#47;&#47;Alert(valoreVariabile);
+	var dividoDate = valoreVariabile.split(&quot; &quot;);
+	if(valoreVariabile.split(&apos; &apos;).length &gt; 1){
+		&#47;&#47;AGGIORNAMENTO
+		setVariable(&apos;FAB_DATA_DA&apos;, dividoDate[0], &quot;r&quot;);
+		setVariable(&apos;FAB_DATA_A&apos;, dividoDate[dividoDate.length-1], &quot;r&quot;);
+	} else {
+		&#47;&#47;ATTUALITA
+		setVariable(&apos;FAB_DATA_DA&apos;, null, &quot;r&quot;);
+		setVariable(&apos;FAB_DATA_A&apos;, valoreVariabile, &quot;r&quot;);
+	}
+} else if(riga == &quot;6&quot; || riga == 6){
+	&#47;&#47;Alert(&apos;NUMERO_RECORD: &apos; + valoreVariabile);
+	setVariable(&apos;FAB_NUMERO_RECORD&apos;, valoreVariabile, &quot;r&quot;);
+}</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>731</xloc>
+      <yloc>49</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>SCRIVI FILE SUL LOG (TER)</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+    <fields>
+      <field>
+        <name>filename</name>
+        </field>
+      <field>
+        <name>exists</name>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>339</xloc>
+      <yloc>237</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RPM INPUT TERRENI</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#47;opt&#47;IMPORT_CATASTO&#47;DATI&#47;ATTUALITA&#47;MANAGE&#47;FABBRICATI&#47;unzip&#47;F1581550380.PRM</filename>
+    <filename_field>filename</filename_field>
+    <rownum_field>riga</rownum_field>
+    <include_filename>N</include_filename>
+    <separator>\n</separator>
+    <enclosure/>
+    <header>N</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <encoding>UTF-8</encoding>
+    <fields>
+      <field>
+        <name>contenuto</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>100000</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>526</xloc>
+      <yloc>237</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>IMPOSTA VARIABILI PER SCRIPT SQL TERRENI</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var split = contenuto.split(&quot;:&quot;);
+var valoreVariabile = trim(split[1]);
+
+if(riga == &quot;1&quot; || riga == 1){
+	&#47;&#47;Alert(&apos;COMUNE: &apos; + valoreVariabile);
+	setVariable(&apos;TER_COMUNE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;2&quot; || riga == 2){
+	&#47;&#47;Alert(&apos;DATA_RICHIESTA: &apos; + valoreVariabile);
+	setVariable(&apos;TER_DATA_RICHIESTA&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;3&quot; || riga == 3){
+	&#47;&#47;Alert(&apos;DATA_ELABORAZIONE: &apos; + valoreVariabile);
+	setVariable(&apos;TER_DATA_ELABORAZIONE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;4&quot; || riga == 4){
+	&#47;&#47;Alert(&apos;TIPO_ESTRAZIONE: &apos; + valoreVariabile);
+	setVariable(&apos;TER_TIPO_ESTRAZIONE&apos;, valoreVariabile, &quot;r&quot;);
+} else if(riga == &quot;5&quot; || riga == 5){
+	&#47;&#47;Alert(valoreVariabile);
+	var dividoDate = valoreVariabile.split(&quot; &quot;);
+	if(valoreVariabile.split(&apos; &apos;).length &gt; 1){
+		&#47;&#47;AGGIORNAMENTO
+		setVariable(&apos;TER_DATA_DA&apos;, dividoDate[0], &quot;r&quot;);
+		setVariable(&apos;TER_DATA_A&apos;, dividoDate[dividoDate.length-1], &quot;r&quot;);
+	} else {
+		&#47;&#47;ATTUALITA
+		setVariable(&apos;TER_DATA_DA&apos;, null, &quot;r&quot;);
+		setVariable(&apos;TER_DATA_A&apos;, valoreVariabile, &quot;r&quot;);
+	}
+} else if(riga == &quot;6&quot; || riga == 6){
+	&#47;&#47;Alert(&apos;NUMERO_RECORD: &apos; + valoreVariabile);
+	setVariable(&apos;TER_NUMERO_RECORD&apos;, valoreVariabile, &quot;r&quot;);
+}</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>740</xloc>
+      <yloc>237</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>CONTROLLA SE LO STREAM E&apos; VUOTO (FAB)</name>
+    <type>DetectEmptyStream</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>339</xloc>
+      <yloc>132</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>IMPOSTA VALORI DI DEFAULT PER SCRIPT SQL (FAB)</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>Alert(&apos;STREAM VUOTO!&apos;);
+setVariable(&apos;FAB_COMUNE&apos;, &apos;F158&apos;, &quot;r&quot;);
+setVariable(&apos;FAB_DATA_RICHIESTA&apos;, null, &quot;r&quot;);
+setVariable(&apos;FAB_DATA_ELABORAZIONE&apos;, null, &quot;r&quot;);
+setVariable(&apos;FAB_TIPO_ESTRAZIONE&apos;, &apos;Estrazione senza file PRM&apos;, &quot;r&quot;);
+setVariable(&apos;FAB_DATA_DA&apos;, null, &quot;r&quot;);
+setVariable(&apos;FAB_DATA_A&apos;, null, &quot;r&quot;);
+setVariable(&apos;FAB_NUMERO_RECORD&apos;, 0, &quot;r&quot;);
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>735</xloc>
+      <yloc>132</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>CONTROLLA SE LO STREAM E&apos; VUOTO (TER)</name>
+    <type>DetectEmptyStream</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>338</xloc>
+      <yloc>341</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>IMPOSTA VALORI DI DEFAULT PER SCRIPT SQL (TER)</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>Alert(&apos;STREAM VUOTO!&apos;);
+setVariable(&apos;TER_COMUNE&apos;, &apos;F158&apos;, &quot;r&quot;);
+setVariable(&apos;TER_DATA_RICHIESTA&apos;, null, &quot;r&quot;);
+setVariable(&apos;TER_DATA_ELABORAZIONE&apos;, null, &quot;r&quot;);
+setVariable(&apos;TER_TIPO_ESTRAZIONE&apos;, &apos;Estrazione senza file PRM&apos;, &quot;r&quot;);
+setVariable(&apos;TER_DATA_DA&apos;, null, &quot;r&quot;);
+setVariable(&apos;TER_DATA_A&apos;, null, &quot;r&quot;);
+setVariable(&apos;TER_NUMERO_RECORD&apos;, 0, &quot;r&quot;);
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>743</xloc>
+      <yloc>341</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+</transformation>

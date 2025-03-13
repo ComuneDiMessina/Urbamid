@@ -1,0 +1,784 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.eng.tz</groupId>
+		<artifactId>UrbamidBuild</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>UrbamidWeb</artifactId>
+	<packaging>war</packaging>
+	<name>UrbamidWeb</name>
+	<description>Web Project for URBAMID</description>
+
+	<organization>
+		<name>Engineering Ingegneria Informatica</name>
+		<url>www.eng.it</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Eng</name>
+			<organization>Engineering Ingegneria Informatica</organization>
+			<url>www.eng.it</url>
+			<roles>
+				<role>Solution Architect</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+		<slf4j.version>1.7.13</slf4j.version>
+		<commons.beanutils.version>1.9.3</commons.beanutils.version>
+		<geojson.jackson.version>1.8</geojson.jackson.version>
+		<http.client.version>4.5.3</http.client.version>
+		<http.core.version>4.4.6</http.core.version>
+		<commons.codec.version>1.10</commons.codec.version>
+		<commons.collections.version>3.2.2</commons.collections.version>
+		<!-- <spring.framework.version>4.3.11.RELEASE</spring.framework.version> 
+			<springframework.security.version>4.2.3.RELEASE</springframework.security.version> -->
+		<spring.framework.version>5.2.11.RELEASE</spring.framework.version>
+		<springframework.security.version>5.4.2</springframework.security.version>
+		<jasper.report.version>6.16.0</jasper.report.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${http.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons.codec.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons.collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${http.client.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpcore</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons.beanutils.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>de.grundid.opendatalab</groupId>
+			<artifactId>geojson-jackson</artifactId>
+			<version>${geojson.jackson.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jackson-databind</artifactId>
+					<groupId>com.fasterxml.jackson.core</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jackson-core</artifactId>
+					<groupId>com.fasterxml.jackson.core</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-saml2-service-provider</artifactId>
+			<version>${springframework.security.version}</version>
+			<!-- <exclusions> <exclusion> <groupId>net.shibboleth.utilities</groupId> 
+				<artifactId>java-support</artifactId> </exclusion> </exclusions> -->
+		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springframework.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>aopalliance</groupId>
+					<artifactId>aopalliance</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${springframework.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>aopalliance</groupId>
+					<artifactId>aopalliance</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springframework.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>aopalliance</groupId>
+					<artifactId>aopalliance</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+			<version>${springframework.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>aopalliance</groupId>
+					<artifactId>aopalliance</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>${springframework.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>aopalliance</groupId>
+					<artifactId>aopalliance</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.framework.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.framework.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<dependency>
+			<artifactId>UrbamidCore</artifactId>
+			<groupId>it.eng.tz</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- JASPER REPORT -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasper.report.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>UrbamidWeb</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<jeeversion>5.0</jeeversion>
+						<wtpContextName>pa</wtpContextName>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<encoding>${source.encoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.4</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+						<execution>
+							<id>copy-env-resources</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<useDefaultDelimiters>true</useDefaultDelimiters>
+								<nonFilteredFileExtensions>
+									<nonFilteredFileExtension>jasper</nonFilteredFileExtension>
+									<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+									<nonFilteredFileExtension>p12</nonFilteredFileExtension>
+									<nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+									<nonFilteredFileExtension>crt</nonFilteredFileExtension>
+									<nonFilteredFileExtension>cer</nonFilteredFileExtension>
+									<nonFilteredFileExtension>key</nonFilteredFileExtension>
+								</nonFilteredFileExtensions>
+								<outputDirectory>${basedir}/src/main/webapp/</outputDirectory>
+								<overwrite>true</overwrite>
+								<resources>
+									<resource>
+										<directory>${basedir}/profiles/${build.profile.id}</directory>
+										<includes>
+											<include>**/*</include>
+										</includes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.3.1</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<nonFilteredFileExtensions>
+							<nonFilteredFileExtension>jasper</nonFilteredFileExtension>
+							<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+							<nonFilteredFileExtension>p12</nonFilteredFileExtension>
+							<nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+							<nonFilteredFileExtension>crt</nonFilteredFileExtension>
+							<nonFilteredFileExtension>cer</nonFilteredFileExtension>
+							<nonFilteredFileExtension>key</nonFilteredFileExtension>
+							<nonFilteredFileExtension>csv</nonFilteredFileExtension>
+						</nonFilteredFileExtensions>
+						<webResources>
+							<resource>
+								<directory>src/main/webapp</directory>
+								<filtering>true</filtering>
+							</resource>
+						</webResources>
+						<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	<profiles>
+		<profile>
+			<!-- ################################################################################################################ -->
+			<!-- Va utilizzato in fase di sviluppo, con UrbamidWeb su localhost													  -->
+			<!-- ################################################################################################################ -->
+			<!--     URBAMIDWEB:	localhost		     	 																	  --> 
+			<!--     SERVIZI: 		192.168.11.222		      																	  --> 
+			<!--     CATASTO: 		192.168.11.159		      																	  --> 
+			<!-- 	 GEOSERVER: 	192.168.11.222																				  -->
+			<!--	 DB:			192.168.11.222																				  -->
+			<!-- *Se si deve modificare un servizio va modificato il puntamento al servizio e startato il servizio in locale	  -->  
+			<!-- ################################################################################################################ -->
+			<id>locale</id>
+			<properties>
+				<build.profile.id>locale</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://192.168.131.148:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>http://urbamid-sviluppo.eng.it:9191/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://localhost:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://localhost:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<urbamid.rest.catasto.endpoint.url>http://urbamid-catasto-collaudo-interno.eng.it:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://urbamid-collaudo-interno.eng.it:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://urbamid-collaudo-interno.eng.it:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://urbamid-collaudo-interno.eng.it:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<!-- urbamid.spid.external.idp.metadata.location>https://metadata-iam-diomedee-sviluppo.aslfg.it/iam-sviluppo-idp-metadata.xml</urbamid.spid.external.idp.metadata.location-->
+				<urbamid.spid.external.idp.metadata.location>https://iam-diomedee-sviluppo.aslfg.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://metadata-entity-urbamid-sviluppo-eng-it</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>http://wso2.org/claims/fiscalNumber;http://wso2.org/claims/email;http://wso2.org/claims/givenname;gender;birthdate;http://wso2.org/claims/lastname</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>http://urbamid-sviluppo.eng.it:9191/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>D:\alepaoli\sviluppo\comunemessina\gitUrbamid\EXPORT_PRINT\</print.export.base.path>
+				<print.export.template.path>D:\alepaoli\sviluppo\comunemessina\gitUrbamid\EXPORT_PRINT\template_locale\</print.export.template.path>
+				<print.export.images.path>D:\alepaoli\sviluppo\comunemessina\gitUrbamid\EXPORT_PRINT\images\</print.export.images.path>
+			</properties>
+		</profile>
+		<profile>
+			<!-- ################################################################################################################ -->
+			<!-- Va utilizzato solo per effettuare un deploy in ambiente di SVILUPPO (RETE ENG)					  				  -->
+			<!-- ################################################################################################################ -->
+			<!--     URBAMIDWEB:	192.168.11.222	     	 																	  --> 
+			<!--     SERVIZI: 		192.168.11.222		      																	  --> 
+			<!--     CATASTO: 		192.168.11.159		      																	  --> 
+			<!-- 	 GEOSERVER: 	192.168.11.222																				  -->
+			<!--	 DB:			192.168.11.222																				  -->
+			<!-- ################################################################################################################ -->
+			<id>sviluppo</id>
+			<properties>
+				<build.profile.id>sviluppo</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://urbamid-collaudo-interno.eng.it:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>http://urbamid-collaudo-interno.eng.it:9191/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://urbamid-collaudo-interno.eng.it:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://urbamid-collaudo-interno.eng.it:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<!--urbamid.rest.catasto.endpoint.url>http://192.168.11.18:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url-->
+				<urbamid.rest.catasto.endpoint.url>http://192.168.11.159:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://urbamid-collaudo-interno.eng.it:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://urbamid-collaudo-interno.eng.it:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://urbamid-collaudo-interno.eng.it:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<urbamid.spid.external.idp.metadata.location>https://iam-diomedee-sviluppo.aslfg.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://metadata-entity-urbamid-collaudo-interno-eng-it</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>http://wso2.org/claims/fiscalNumber;http://wso2.org/claims/email;http://wso2.org/claims/givenname;gender;birthdate;http://wso2.org/claims/lastname</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>http://urbamid-collaudo-interno.eng.it:9191/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>/opt/EXPORT_PRINT/template_sviluppo/</print.export.base.path>
+				<print.export.images.base.path>/opt/EXPORT_PRINT/images/</print.export.images.base.path>
+			</properties>
+		</profile>
+		<profile>
+			<!-- ################################################################################################################ 	-->
+			<!-- Va utilizzato quando si deve deployare in produzione su AS1 192.168.131.140 	 (RETE MESSINA NODO 1)			  	-->
+			<!-- ################################################################################################################ 	-->
+			<!--     URBAMIDWEB:	192.168.131.140	 109.117.23.72 https://urbamidplus-collaudosit.comune.messina.it/UrbamidWeb		--> 
+			<!--     SERVIZI: 		192.168.131.145		      																	  	--> 
+			<!--     CATASTO: 		192.168.131.147		      																	  	--> 
+			<!-- 	 GEOSERVER: 	192.168.131.143																				  	-->
+			<!--	 DB:			192.168.131.148																				  	-->
+			<!-- ################################################################################################################ 	-->
+			<id>coll-nodo-1</id>
+			<properties>
+				<build.profile.id>coll-nodo-1</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://192.168.131.148:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>https://urbamidplus-collaudo.comune.messina.it/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://192.168.131.145:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://192.168.131.145:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<urbamid.rest.catasto.endpoint.url>http://192.168.131.152:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://192.168.131.145:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://192.168.131.145:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://192.168.131.145:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<urbamid.spid.external.idp.metadata.location>https://spid-test.comune.messina.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://urbamidplus-collaudo-metadata-entity</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>fiscalNumber;email;name;familyName</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>https://urbamidplus-collaudo.comune.messina.it/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>/data/nfs_share/EXPORT_PRINT/template_collaudo/</print.export.base.path>
+				<print.export.template.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.template.path>
+				<print.export.images.path>/data/nfs_share/EXPORT_PRINT/images/</print.export.images.path>
+			</properties>
+		</profile>
+		<profile>
+			<!-- ################################################################################################################ 	-->
+			<!-- Va utilizzato quando si deve deployare in produzione su AS2 192.168.131.141 	 (RETE MESSINA NODO 2)			  	-->
+			<!-- ################################################################################################################ 	-->
+			<!--     URBAMIDWEB:	192.168.131.141	 ???.???.??.?? https://urbamidplus-collaudosit.comune.messina.it/UrbamidWeb		--> 
+			<!--     SERVIZI: 		192.168.131.146		      																	  	--> 
+			<!--     CATASTO: 		192.168.131.147		      																	  	--> 
+			<!-- 	 GEOSERVER: 	192.168.131.144																				  	-->
+			<!--	 DB:			192.168.131.148																				  	-->
+			<!-- ################################################################################################################ 	-->
+			<id>coll-nodo-2</id>
+			<properties>
+				<build.profile.id>coll-nodo-2</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://192.168.131.148:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>https://urbamidplus-collaudo.comune.messina.it/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://192.168.131.146:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://192.168.131.146:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<urbamid.rest.catasto.endpoint.url>http://192.168.131.152:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://192.168.131.146:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://192.168.131.146:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://192.168.131.146:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<urbamid.spid.external.idp.metadata.location>https://spid-test.comune.messina.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://urbamidplus-collaudo-metadata-entity</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>fiscalNumber;email;name;familyName</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>https://urbamidplus-collaudo.comune.messina.it/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>/data/nfs_share/EXPORT_PRINT/template_collaudo/</print.export.base.path>
+				<print.export.template.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.template.path>
+				<print.export.images.path>/data/nfs_share/EXPORT_PRINT/images/</print.export.images.path>
+			</properties>
+		</profile>
+		<profile>
+			<!-- ################################################################################################################ 	-->
+			<!-- Va utilizzato quando si deve deployare in produzione su AS1 192.168.141.140 	 (RETE MESSINA NODO 1)			  	-->
+			<!-- ################################################################################################################ 	-->
+			<!--     URBAMIDWEB:	192.168.141.140	 109.117.23.72 https://urbamidplus-collaudosit.comune.messina.it/UrbamidWeb		--> 
+			<!--     SERVIZI: 		192.168.141.145		      																	  	--> 
+			<!--     CATASTO: 		192.168.141.147		      																	  	--> 
+			<!-- 	 GEOSERVER: 	192.168.141.143																				  	-->
+			<!--	 DB:			192.168.141.148																				  	-->
+			<!-- ################################################################################################################ 	-->
+			<id>prod-nodo-1</id>
+			<properties>
+				<build.profile.id>prod-nodo-1</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://192.168.141.148:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>https://urbamidplus.comune.messina.it/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://192.168.141.145:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://192.168.141.145:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<urbamid.rest.catasto.endpoint.url>http://192.168.141.152:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://192.168.141.145:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://192.168.141.145:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://192.168.141.145:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<urbamid.spid.external.idp.metadata.location>https://spid.comune.messina.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://urbamidplus-metadata-entity</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>fiscalNumber;email;name;familyName</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>https://urbamidplus.comune.messina.it/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.base.path>
+				<print.export.template.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.template.path>
+				<print.export.images.path>/data/nfs_share/EXPORT_PRINT/images/</print.export.images.path>
+			</properties>
+		</profile>
+		<profile>
+			<!-- ################################################################################################################ 	-->
+			<!-- Va utilizzato quando si deve deployare in produzione su AS2 192.168.141.141 	 (RETE MESSINA NODO 2)			  	-->
+			<!-- ################################################################################################################ 	-->
+			<!--     URBAMIDWEB:	192.168.141.141	 ???.???.??.?? https://urbamidplus-collaudosit.comune.messina.it/UrbamidWeb		--> 
+			<!--     SERVIZI: 		192.168.141.146		      																	  	--> 
+			<!--     CATASTO: 		192.168.141.147		      																	  	--> 
+			<!-- 	 GEOSERVER: 	192.168.141.144																				  	-->
+			<!--	 DB:			192.168.141.148																				  	-->
+			<!-- ################################################################################################################ 	-->
+			<id>prod-nodo-2</id>
+			<properties>
+				<build.profile.id>prod-nodo-2</build.profile.id>
+				<db.datasource.url>jdbc:postgresql://192.168.141.148:5432/dbUrbamid</db.datasource.url>
+				<db.datasource.username>postgres</db.datasource.username>
+				<db.datasource.password>postgres</db.datasource.password>
+				<db.datasource.driver>org.postgresql.Driver</db.datasource.driver>
+				<urbamid.login.url>https://urbamidplus.comune.messina.it/UrbamidWeb</urbamid.login.url>
+				<!-- PUNTAMENTI AI SERVIZI -->
+				<urbamid.rest.profilemanager.endpoint.url>http://192.168.141.146:8081/urbamid/profilemanager/</urbamid.rest.profilemanager.endpoint.url>
+				<urbamid.rest.administration.endpoint.url>http://192.168.141.146:8082/urbamid/administration/</urbamid.rest.administration.endpoint.url>
+				<urbamid.rest.catasto.endpoint.url>http://192.168.141.152:8083/urbamid/catasto/</urbamid.rest.catasto.endpoint.url>
+				<urbamid.rest.wrappergeo.endpoint.url>http://192.168.141.146:8084/urbamid/wrappergeo/</urbamid.rest.wrappergeo.endpoint.url>
+				<urbamid.rest.toponomastica.endpoint.url>http://192.168.141.146:8085/urbamid/toponomastica/</urbamid.rest.toponomastica.endpoint.url>
+				<urbamid.rest.prg.endpoint.url>http://192.168.141.146:8086/urbamid/prg/</urbamid.rest.prg.endpoint.url>
+				<!-- INTEGRAZIONE WSO2 -->
+				<urbamid.spid.external.idp.metadata.location>https://spid.comune.messina.it/identity/metadata/saml2</urbamid.spid.external.idp.metadata.location>
+				<urbamidweb-metadata-entity>https://urbamidplus-metadata-entity</urbamidweb-metadata-entity>
+				<urbamid.spid.baseClaims>http://wso2.org/claims/</urbamid.spid.baseClaims>
+				<urbamid.spid.claims>fiscalNumber;email;name;familyName</urbamid.spid.claims>
+				<urbamid.spid.assertion.consumer.location>https://urbamidplus.comune.messina.it/UrbamidWeb/login/saml2/sso/UrbamidWeb</urbamid.spid.assertion.consumer.location>
+				<!-- PRINT -->
+				<print.export.base.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.base.path>
+				<print.export.template.path>/data/nfs_share/EXPORT_PRINT/template_produzione/</print.export.template.path>
+				<print.export.images.path>/data/nfs_share/EXPORT_PRINT/images/</print.export.images.path>
+			</properties>
+		</profile>
+	</profiles>
+</project>

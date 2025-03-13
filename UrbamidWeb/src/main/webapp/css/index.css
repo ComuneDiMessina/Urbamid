@@ -1,0 +1,325 @@
+.bg-light.bg-white {
+    background-color: #004275!important;
+}
+@media (min-width: 1280px)
+.bg-light.bg-white, .sez-doc {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.bg-light.bg-white {
+    background-color: white!important;
+    display: block;
+    padding-top: 0;
+    /* border-bottom: 1px solid #eee; */
+    box-shadow: 0px 5px 30px -5px rgba(0,0,0,.2) /*#C7CDCD*/;
+}
+.bg-light.bg-white {
+    background-color: #004275 !important;
+    padding: .5rem 1rem;
+}
+.fixed-top-inner {
+    z-index: 1;
+}
+
+.navbar > .container-fluid {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: block;
+}
+.navbar-expand-lg .container, .navbar-expand-lg .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar .container, .navbar .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (min-width: 992px)
+.navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
+    flex-wrap: nowrap;
+}
+.navbar>.container, .navbar>.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row, .form-horizontal>.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+.container-fluid > .cont-logo-social-link {
+    margin: 0;
+    text-align: left;
+}
+.cont-logo-social-link {
+    height: 110px;
+}
+
+.row, .form-horizontal>.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#navbarResponsive {
+    margin-left: -1rem;
+}
+.clearfix {
+    clear: both;
+}
+.intestazione {
+    height: 48px;
+    border-bottom: 2px solid #f7f3f3;
+    line-height: 48px;
+}
+.intestazione > h1, .intestazione-r {
+    color: #004275;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 48px;
+}
+.nav-link, .intestazione > h1 > a, .intestazione-r {
+    color: #fff!important;
+}
+.nav-link, .intestazione>h1>a, .intestazione-r {
+    color: #fff !important;
+}
+.nav-link, .intestazione > h1 > a, .intestazione-r {
+    color: #fff!important;
+}
+.intestazione-r {
+    position: absolute;
+    right: 2rem;
+    top: 0px;
+}
+.intestazione > h1, .intestazione-r {
+    color: #004275;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 48px;
+    width: 70%;
+    float: left;
+}
+.nav-link, .intestazione>h1>a, .intestazione-r {
+    color: #fff !important;
+}
+.intestazione-r a, .intestazione-r a:hover {
+    color: #fff!important;
+}
+.intestazione-r a {
+    color: #004275;
+    margin-left: 16px;
+}
+.intestazione-r a, .intestazione-r a:hover {
+    color: #fff !important;
+}
+.container-fluid > .cont-logo-social-link {
+    margin: 0;
+    text-align: left;
+}
+
+.cont-logo-social-link {
+    height: 110px;
+}
+.row, .form-horizontal>.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px!important;
+    margin-left: 15px!important;
+    width: 100%;
+}
+.container-fluid > .cont-logo-social-link {
+    margin: 0;
+    text-align: left;
+}
+.no-p-l {
+    padding-left: 0 !important;
+}
+@media (min-width: 992px)
+.col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.navbar-light .navbar-brand {
+    color: rgba(0,0,0,0.9);
+}
+
+.navbar-brand {
+    margin-right: 0.5rem;
+}
+.navbar-brand {
+    margin-right: 0;
+    max-width: calc(100% - 72px);
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+body .navbar-brand>img {
+    display: inline-block;
+    max-width: 70px;
+    margin-right: 15px;
+}
+
+.container-fluid > .cont-logo-social-link span.title {
+    color: white!important;
+}
+
+.container-fluid > .cont-logo-social-link span.title {
+    color: #004275;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    top: 4px;
+}
+.container-fluid>.cont-logo-social-link span.title {
+    color: white !important;
+}
+.container-fluid > .cont-logo-social-link span.title {
+    color: white!important;
+}
+.container-fluid > .cont-logo-social-link span.title {
+    color: #004275;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    top: 4px;
+}
+.container-fluid>.cont-logo-social-link span.title {
+    color: white !important;
+}
+.social-search-container {
+    padding-top: 22px;
+}
+.text-right {
+    text-align: right !important;
+}
+@media (min-width: 992px)
+.col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.social-network.d-none {
+    display: block !important;
+}
+ul.social-network {
+    list-style: none;
+    margin: 0;
+    padding-top: 15px;
+}
+.d-none, .hide {
+    display: none !important;
+}
+ul.social-network li {
+    display: inline;
+    margin-right: 0px;
+    margin-left: 0;
+    color: #004275;
+}
+ul.social-network li a, ul.social-network li a i {
+    cursor: pointer;
+}
+ul.social-network li a, ul.social-network li a i {
+    cursor: pointer;
+}
+ul.social-network li a i {
+    margin-bottom: 10px;
+}
+i.icon-bg-light {
+    color: #004275;
+    background: #fff;
+}
+i.icon-bg-light {
+    display: inline-block;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+}
+a [class^="icon-"] {
+    cursor: pointer;
+}
+.icon-facebook:before {
+    content: "\f09a";
+}
+body {
+	margin: 0px;
+	font-family: 'Titillium Web', sans-serif;
+}
+.dropdown-toggle:hover, .dropdown-toggle:focus {
+	background-color: transparent!important;
+}
+.dropdown-toggle:hover span {
+	color:#fff;
+}
+
+
+/************************************************************************************************** */
+/** HEADER ** */
+/************************************************************************************************** */
+.navbar {
+	padding:0px;
+}
+.navbar .navbar-header {
+	width: 75%;float: left;height: 90px;
+}
+.navbar-brand.mr-auto {width: 40%;margin-right: 3%;height: 100%;}
+.navbar-brand.mr-auto.navbar-co-brand {
+	height: 50px;line-height: 50px;margin-top: 20px;width: 55%;float: left;border-left: 1px solid #fff;padding-left: 10px;
+}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina {}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-img {width: 30%;float: left;}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-img img {vertical-align: middle;border-style: none;height: 80px;}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-label {height: 80px;padding: 8px 0px 8px 50%;color: white;}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-label .first-line {width: 100%;float: left;font-size: 17px;line-height: 17px;}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-label .second-line {width: 100%;float: left;font-size: 30px;font-weight: bold;line-height: 30px;}
+.navbar-brand.mr-auto .navbar-co-brand .araldica-citta-messina .brand-label .third-line {width: 100%;float: left;font-size: 17px;font-style: italic;line-height: 17px;}
+.navbar-co-brand {height: 100%;width: 50%;float: left;padding-left: 10px;}
+.navbar-co-brand .navbar-co-brand-label {font-size: 25px;font-weight: 500;line-height: 90px;color: white;}
+.navbar-brand-title {border-left: 1px solid #fff;}
+.collapse.navbar-collapse.nopr-md.nav-header-right {
+	width: 24%;float: left;margin: 0px;padding: 0px;height: 90px!important;
+}
+.nav-header-right .back {
+	padding: 25px 0px;height: 40px;float: right;width: 10%;
+}
+.nav-header-right .userPanel {
+	width: 80%;padding: 25px 20px 25px 0px;text-align: right;
+}
+@media screen and (max-width: 640px) {
+	
+}

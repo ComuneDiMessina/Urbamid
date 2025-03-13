@@ -1,0 +1,13 @@
+/*globals jQuery, define, module, exports, require, window, document, postMessage */
+"use strict";
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['jquery'], factory);
+	}
+	else if(typeof module !== 'undefined' && module.exports) {
+		module.exports = factory(require('jquery'));
+	}
+	else {
+		factory(jQuery);
+	}
+}(function ($, _undefined) { }));

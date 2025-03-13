@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>TRASFORMATA_SCRIVI_PRM_IN_DB</name>
+    <description/>
+    <extended_description/>
+    <trans_version>1</trans_version>
+    <trans_status>1</trans_status>
+    <directory>&#47;</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <read/>
+      <write/>
+      <input/>
+      <output/>
+      <update/>
+      <rejected/>
+      <connection/>
+      <table/>
+      <step_performance_table/>
+      <use_batchid>Y</use_batchid>
+      <use_logfield>N</use_logfield>
+      <size_limit_lines/>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+  <modified_user>-</modified_user>
+  <modified_date>2020&#47;02&#47;19 10:49:49.627</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>CONNESSIONE_URBAMID</name>
+    <server>${DATABASE_HOST}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${DATABASE_NAME}</database>
+    <port>${DATABASE_PORT}</port>
+    <username>${DATABASE_USER}</username>
+    <password>${DATABASE_PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${DATABASE_PORT}</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+  </order>
+  <step>
+    <name>INSERISCI NEL DATABASE (FABBRICATI)</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>CONNESSIONE_URBAMID</connection>
+    <execute_each_row>N</execute_each_row>
+    <replace_variables>Y</replace_variables>
+    <sql>INSERT INTO public.u_cat_aggiornamenti(
+            comune, data_richiesta, data_elaborazione, tipo_estrazione, 
+            numero_record, data_inizio_validita, data_fine_validita, data_creazione)
+    VALUES (
+			&apos;${FAB_COMUNE}&apos;, 
+			case when &apos;${FAB_DATA_RICHIESTA}&apos; = null or trim(&apos;${FAB_DATA_RICHIESTA}&apos;) = &apos;null&apos; then null else to_date(&apos;${FAB_DATA_RICHIESTA}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,
+			case when &apos;${FAB_DATA_ELABORAZIONE}&apos; = null or trim(&apos;${FAB_DATA_ELABORAZIONE}&apos;) = &apos;null&apos; then null else to_date(&apos;${FAB_DATA_ELABORAZIONE}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,
+			&apos;${FAB_TIPO_ESTRAZIONE}&apos;,  
+            &apos;${FAB_NUMERO_RECORD}&apos;, 
+			case when &apos;${FAB_DATA_DA}&apos; = null or trim(&apos;${FAB_DATA_DA}&apos;) = &apos;null&apos; then null else to_date(&apos;${FAB_DATA_DA}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,			
+			case when &apos;${FAB_DATA_A}&apos; = null or trim(&apos;${FAB_DATA_A}&apos;) = &apos;null&apos; then null else to_date(&apos;${FAB_DATA_A}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end, 
+			now());</sql>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>201</xloc>
+      <yloc>99</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>INSERISCI NEL DATABASE (TERRENI)</name>
+    <type>ExecSQL</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>CONNESSIONE_URBAMID</connection>
+    <execute_each_row>N</execute_each_row>
+    <replace_variables>Y</replace_variables>
+    <sql>INSERT INTO public.u_cat_aggiornamenti(
+            comune, data_richiesta, data_elaborazione, tipo_estrazione, 
+            numero_record, data_inizio_validita, data_fine_validita, data_creazione)
+    VALUES (
+			&apos;${TER_COMUNE}&apos;, 
+			case when &apos;${TER_DATA_RICHIESTA}&apos; = null or trim(&apos;${TER_DATA_RICHIESTA}&apos;) in(&apos;null&apos;, &apos;&apos;) then null else to_date(&apos;${TER_DATA_RICHIESTA}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,
+			case when &apos;${TER_DATA_ELABORAZIONE}&apos; = null or trim(&apos;${TER_DATA_ELABORAZIONE}&apos;) in(&apos;null&apos;, &apos;&apos;) then null else to_date(&apos;${TER_DATA_ELABORAZIONE}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,
+			&apos;${TER_TIPO_ESTRAZIONE}&apos;,  
+            &apos;${TER_NUMERO_RECORD}&apos;, 
+			case when &apos;${TER_DATA_DA}&apos; = null or trim(&apos;${TER_DATA_DA}&apos;) in(&apos;null&apos;, &apos;&apos;) then null else to_date(&apos;${TER_DATA_DA}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end,			
+			case when &apos;${TER_DATA_A}&apos; = null or trim(&apos;${TER_DATA_A}&apos;) in(&apos;null&apos;, &apos;&apos;) then null else to_date(&apos;${TER_DATA_A}&apos;, &apos;DD&#47;MM&#47;YYYY&apos;) end, 
+			now());</sql>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>525</xloc>
+      <yloc>102</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+</transformation>

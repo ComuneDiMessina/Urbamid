@@ -1,0 +1,68 @@
+package it.eng.tz.urbamid.toponomastica.filter;
+
+import java.io.Serializable;
+
+public class GiunzioneFilter implements Serializable{
+
+	private static final long serialVersionUID = -2873158560562468839L;
+	
+	private String descrizione;
+	private Long tipoTopologico;
+	private Long tipoFunzionale;
+	private String stato;
+	private Integer pageIndex;
+	private Integer pageSize;
+	private Integer pageDraw;
+	private OrderFilter pageOrder;
+	
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	public Long getTipoTopologico() {
+		return tipoTopologico;
+	}
+	public void setTipoTopologico(Long tipoTopologico) {
+		this.tipoTopologico = tipoTopologico;
+	}
+	public Long getTipoFunzionale() {
+		return tipoFunzionale;
+	}
+	public void setTipoFunzionale(Long tipoFunzionale) {
+		this.tipoFunzionale = tipoFunzionale;
+	}
+	public String getStato() {
+		return stato;
+	}
+	public void setStato(String stato) {
+		this.stato = stato;
+	}
+	public Integer getPageIndex() {
+		return pageIndex;
+	}
+	public void setPageIndex(Integer pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+	public Integer getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Integer getPageDraw() {
+		return pageDraw;
+	}
+	public void setPageDraw(Integer pageDraw) {
+		this.pageDraw = pageDraw;
+	}
+	public OrderFilter getPageOrder() {
+		return pageOrder;
+	}
+	public void setPageOrder(OrderFilter pageOrder) {
+		this.pageOrder = pageOrder;
+	}
+	
+}

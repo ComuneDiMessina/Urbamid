@@ -1,0 +1,5 @@
+[ 
+	{"name": "Ospedale (CURA-OSPE)", "code": "001"}, 
+	{"name": "Casa di cura (CURA-CACU)", "code": "002"}, 
+	{"name": "Altro (CURA-ALTR)", "code": "003"}
+]

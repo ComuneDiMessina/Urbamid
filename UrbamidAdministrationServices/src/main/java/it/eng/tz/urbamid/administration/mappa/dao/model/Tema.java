@@ -1,0 +1,103 @@
+package it.eng.tz.urbamid.administration.mappa.dao.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class Tema implements Serializable{
+
+	/**
+	 *   new Tema(1L,"Tema 1","Descr 1",1L)
+	 */
+	private static final long serialVersionUID = -6374347647646683797L;
+
+ 
+	private Long id;
+	private Long idPadre;
+	private String nome;
+	private String descrizione;
+	private Long ordinamento;
+	private Date dataCreazione;
+	private Date dataModifica;
+	private String utenteCreazione;
+	private String utenteModifica;
+	
+	public Tema() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Tema(Long id, String nome, String descrizione, Long ordinamento) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.ordinamento = ordinamento;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getIdPadre() {
+		return idPadre;
+	}
+	public void setIdPadre(Long idPadre) {
+		this.idPadre = idPadre;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getDescrizione() {
+		return descrizione;
+	}
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	public Long getOrdinamento() {
+		return ordinamento;
+	}
+	public void setOrdinamento(Long ordinamento) {
+		this.ordinamento = ordinamento;
+	}
+
+	public Date getDataCreazione() {
+		return dataCreazione;
+	}
+
+	public void setDataCreazione(Date dataCreazione) {
+		this.dataCreazione = dataCreazione;
+	}
+
+	public Date getDataModifica() {
+		return dataModifica;
+	}
+
+	public void setDataModifica(Date dataModifica) {
+		this.dataModifica = dataModifica;
+	}
+
+	public String getUtenteCreazione() {
+		return utenteCreazione;
+	}
+
+	public void setUtenteCreazione(String utenteCreazione) {
+		this.utenteCreazione = utenteCreazione;
+	}
+
+	public String getUtenteModifica() {
+		return utenteModifica;
+	}
+
+	public void setUtenteModifica(String utenteModifica) {
+		this.utenteModifica = utenteModifica;
+	}
+
+ 
+	
+	
+}

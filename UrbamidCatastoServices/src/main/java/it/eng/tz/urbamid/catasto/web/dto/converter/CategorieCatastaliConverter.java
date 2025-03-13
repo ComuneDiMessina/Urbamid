@@ -1,0 +1,50 @@
+package it.eng.tz.urbamid.catasto.web.dto.converter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import it.eng.tz.urbamid.catasto.exception.ConverterException;
+import it.eng.tz.urbamid.catasto.persistence.model.CategorieCatastali;
+import it.eng.tz.urbamid.catasto.web.dto.TipologicaDTO;
+
+@Component
+public class CategorieCatastaliConverter implements IConverter<CategorieCatastali, TipologicaDTO>{
+
+	private static final Logger logger = LoggerFactory.getLogger(CategorieCatastaliConverter.class.getName());
+
+	@Override
+	public CategorieCatastali toModel(TipologicaDTO dto) throws ConverterException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipologicaDTO toDto(CategorieCatastali model) throws ConverterException {
+		TipologicaDTO dto = new TipologicaDTO();
+		dto.setCodice(model.getCodice());
+		dto.setDescrizione(model.getCodice() + " - " + model.getDescrizione());
+		dto.setInformazione(model.getInformazione());
+		return dto;
+	}
+
+	@Override
+	public List<TipologicaDTO> toDto(List<CategorieCatastali> models) throws ConverterException {
+		List<TipologicaDTO> result = new ArrayList<>();
+		try 
+		{
+			for (CategorieCatastali model : models) {
+				result.add(this.toDto(model));
+			}
+		}
+		catch (Exception e) 
+		{
+			logger.error("Errore nella conversione CategorieCatastaliGeom --> CategorieCatastaliGeomDTO" + e, e);
+		}
+
+		return result;
+	}
+}

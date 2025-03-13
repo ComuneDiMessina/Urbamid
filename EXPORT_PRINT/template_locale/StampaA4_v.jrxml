@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 5.5.1  -->
+<!-- 2022-08-12T10:38:13 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Stampa_A4_v" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="057609d1-81fd-4560-b300-d867e469effe">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="0" width="199" height="20" uuid="191fe845-34e9-481a-b5f6-58348dbe73d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITTA' DI MESSINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="400" height="40" uuid="d8ced331-bf28-45aa-b866-ec59585bf0ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dipartimento Servizi Territoriali ed Urbanistici
+Servizio Pianificazione Urbanistica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="60" width="130" height="10" uuid="6d7adb5a-a10e-4318-8446-169956c08100"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Piazza Vittoria, 6 - 98122 Messina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="60" width="70" height="10" uuid="34398918-0b0e-428d-9b32-b2aa78026cd2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(+39) 090 7724721]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="60" width="130" height="10" uuid="7ab28e0a-4d59-4d12-9720-d2f01ba97535"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[umberto.costa@comune.messina.it]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="0" width="60" height="80" uuid="e13f6fcc-ac09-4d8c-b970-288263c8982c"/>
+				<imageExpression><![CDATA["C:\\alepaoli\\sviluppo\\comunemessina\\gitUrbamid\\EXPORT_PRINT\\images\\araldica.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="360" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="-40" width="550" height="400" uuid="e7988a6d-6b2e-4adc-af84-3b223497898f"/>
+				<imageExpression><![CDATA["C:\\alepaoli\\sviluppo\\comunemessina\\gitUrbamid\\EXPORT_PRINT\\images\\image.jpeg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

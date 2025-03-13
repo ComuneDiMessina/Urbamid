@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.eng.tz</groupId>
+	<artifactId>UrbamidBuild</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>UrbamidBuild</name>
+	<description>Build Project for URBAMID</description>
+	
+	<organization>
+		<name>Engineering Ingegneria Informatica</name>
+		<url>www.eng.it</url>
+	</organization>
+	
+	<developers>
+		<developer>
+			<name>Eng</name>
+			<organization>Engineering Ingegneria Informatica</organization>
+			<url>www.eng.it</url>
+			<roles>
+				<role>Solution Architect</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<springmodules.version>0.8</springmodules.version>
+		<source.encoding>UTF-8</source.encoding>
+		<reporting.encoding>UTF-8</reporting.encoding>
+		<java.compiler.version>1.8</java.compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.compiler.show.warnings>true</java.compiler.show.warnings>
+		<java.compiler.show.deprecation>true</java.compiler.show.deprecation>
+        <maven.test.skip>true</maven.test.skip>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>  
+		<http.client.version>[4.5.8,)</http.client.version>
+		<http.core.version>[4.4.11,)</http.core.version>
+		<commons.codec.version>[1.12,)</commons.codec.version>
+                <src.dir>src/main/webapp</src.dir>
+	</properties>
+
+	<modules>
+		<module>UrbamidCore</module>
+		<module>UrbamidWeb</module>
+        <module>UrbamidProfileManagerServices</module>
+        <module>UrbamidAdministrationServices</module>
+        <module>UrbamidCatastoServices</module>
+        <module>UrbamidPRGServices</module>
+        <module>UrbamidToponomasticaServices</module>
+		<module>UrbamidWrapperGeoServices</module>
+	</modules>
+	
+	<dependencies>
+				
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons.codec.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${http.core.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${http.client.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpcore</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>	
+			<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-resources-plugin</artifactId>
+	                <version>3.1.0</version>
+	                <configuration>
+	                    <useDefaultDelimiters>true</useDefaultDelimiters>
+	                    <nonFilteredFileExtensions>
+	                        <nonFilteredFileExtension>jasper</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>crt</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>cer</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>key</nonFilteredFileExtension>
+	                    </nonFilteredFileExtensions>
+	                    <encoding>${reporting.encoding}</encoding>
+	                </configuration>
+	            </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

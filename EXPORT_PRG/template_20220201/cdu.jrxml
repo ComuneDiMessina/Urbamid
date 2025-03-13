@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cdu" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d045d287-29e4-4129-a5ce-462ba8625c21">
+	<property name="net.sf.jasperreports.export.docx.frames.as.nested.tables" value="false"/>
+	<property name="net.sf.jasperreports.export.docx.flexible.row.height" value="true"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#8F8F8F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="listaRicadenze" uuid="5f8b8ab9-acd5-4e1d-8ba2-b83835c2b3b7">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="numero" class="java.lang.Integer"/>
+		<field name="foglio" class="java.lang.String"/>
+		<field name="particelle" class="java.lang.String"/>
+		<field name="ricadenza" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="listaIntersezioniAggiuntive" uuid="0a6a47c8-1983-441e-b20f-08fb3f639fca">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="string" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="listaDocumenti" uuid="9b749e24-aec8-4fd2-9742-855b9a57c8e7">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="nomeDocumento" class="java.lang.String"/>
+		<field name="listaCodiciIndici" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	</subDataset>
+	<subDataset name="listaCodiciIndici" uuid="8ecc837c-539e-4ad7-9e72-55fe48558176">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="codice" class="java.lang.String"/>
+		<field name="articoloElenco" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="listaVincoliPiano" uuid="5c0d303e-b196-45d7-9a5b-8d7c1fe97144">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="string" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="protocollo" class="java.lang.String"/>
+	<field name="dataIstanza" class="java.lang.String"/>
+	<field name="ditta" class="java.lang.String"/>
+	<field name="importoVersamento1" class="java.lang.String"/>
+	<field name="dataVersamento1" class="java.lang.String"/>
+	<field name="importoVersamento2" class="java.lang.String"/>
+	<field name="dataVersamento2" class="java.lang.String"/>
+	<field name="codiceVersamento1" class="java.lang.String"/>
+	<field name="codiceVersamento2" class="java.lang.String"/>
+	<field name="listaRicadenze" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="nomeVariante" class="java.lang.String"/>
+	<field name="numeroVariante" class="java.lang.String"/>
+	<field name="pianoPaesaggistico" class="java.lang.String"/>
+	<field name="riferimentoMappaCatastale" class="java.lang.String"/>
+	<field name="riferimentoVisuraCatastale" class="java.lang.String"/>
+	<field name="dataVisuraCatastale" class="java.lang.String"/>
+	<field name="listaIntersezioniAggiuntive" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="listaStabili" class="java.lang.String"/>
+	<field name="listaNonStabili" class="java.lang.String"/>
+	<field name="listaInApf" class="java.lang.String"/>
+	<field name="listaInApfAltriAnni" class="java.lang.String"/>
+	<field name="listaFuoriApfParticelle" class="java.lang.String"/>
+	<field name="listaFuoriApfAnni" class="java.lang.String"/>
+	<field name="indiciVariante" class="java.lang.Boolean"/>
+	<field name="listaDocumenti" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="listaCodiciIndici" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="codiceModelloF23" class="java.lang.String"/>
+	<field name="dataModelloF23" class="java.lang.String"/>
+	<field name="listaVincoliPiano" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="0" width="199" height="20" uuid="191fe845-34e9-481a-b5f6-58348dbe73d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITTA' DI MESSINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="400" height="40" uuid="d8ced331-bf28-45aa-b866-ec59585bf0ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dipartimento Servizi Territoriali ed Urbanistici
+Servizio Pianificazione Urbanistica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="60" width="130" height="10" uuid="6d7adb5a-a10e-4318-8446-169956c08100"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Piazza Vittoria, 6 - 98122 Messina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="60" width="70" height="10" uuid="34398918-0b0e-428d-9b32-b2aa78026cd2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(+39) 090 7724721]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="60" width="130" height="10" uuid="7ab28e0a-4d59-4d12-9720-d2f01ba97535"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[umberto.costa@comune.messina.it]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="0" width="60" height="80" uuid="e13f6fcc-ac09-4d8c-b970-288263c8982c"/>
+				<imageExpression><![CDATA["/data/nfs_share/EXPORT_PRG/template/araldica.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="220" y="60" width="10" height="10" uuid="1598c0d1-eb58-46e9-83a6-9bd9cf35e590"/>
+				<imageExpression><![CDATA["/data/nfs_share/EXPORT_PRG/template/telephone.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="320" y="60" width="9" height="10" uuid="b5b8d01a-3612-489a-a571-11f428ed1ff9"/>
+				<imageExpression><![CDATA["/data/nfs_share/EXPORT_PRG/template/email.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="370" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="394" y="10" width="150" height="100" uuid="5a24cea5-ecb8-40f3-92b4-80d0afa6ebdc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="227" y="230" width="100" height="20" uuid="732bff0a-d09f-4041-819c-b3bab982a8fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTESTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="10" width="100" height="20" uuid="1b3edfb7-1302-47fa-8ed8-967cf7c96adf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IL DIRIGENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="119" height="20" uuid="cbffb18a-755a-4dfb-a4fa-e05639f83791"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vista l'istanza, prot. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="119" y="40" width="60" height="20" uuid="2c874c2d-789a-4b89-9306-dbb2dfc16fb6"/>
+				<textElement markup="html">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{protocollo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="179" y="40" width="28" height="20" uuid="a20bc0ca-be62-41f4-b2cd-4a3722fa00e2"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ del]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="207" y="40" width="80" height="20" uuid="6b1adf39-ad48-42ef-a4f7-f3389945befd"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataIstanza}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="287" y="40" width="92" height="20" uuid="58a6f599-8e6c-4970-8ac4-7446882be116"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, presentata]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="60" height="20" uuid="1c0d5193-dea2-4039-b779-601501c3ec2a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[dalla ditta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="60" width="220" height="20" uuid="6defc797-9444-4903-9564-eb18e2fad108"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ditta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="190" height="20" uuid="3728533d-5cc0-42b9-99a9-46a3b2588d31"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Visto il Rapporto Tecnico datato ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="80" width="80" height="20" uuid="d7e6835c-5c2a-426c-8c1c-7f75d0199ecd"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataIstanza}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="80" width="108" height="20" uuid="f05fb01d-bccc-4676-9a5f-1aba1973bb42"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, redatto dal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="280" height="20" uuid="0e4335c8-8a1b-4db0-87c5-d73302b5a742"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Servizio Certificazioni Urbanistiche]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="210" height="20" uuid="c2166c3e-9ca3-48d1-9242-94fd3c01f483"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vista la ricevuta del versamento di ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="120" width="90" height="20" uuid="7229a225-1555-4340-a3bc-1d346ac04f9f"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA['€' + $F{importoVersamento1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="120" width="110" height="20" uuid="800db4f0-e800-456d-aa43-79e4b3f9d5bc"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ effettuato in data]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="120" width="80" height="20" uuid="a1e47254-a6e7-479f-a10f-1de5724b5e3d"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataVersamento1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="490" y="120" width="61" height="20" uuid="26440626-9f7a-4557-b080-fd30e11c4393"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ - con]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="40" height="20" uuid="551411bf-0dbb-4692-9cb6-0c9e348de716"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[codice]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="140" width="80" height="20" uuid="21612c54-a916-4e54-8cb4-dd65a4e98713"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codiceVersamento1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="140" width="290" height="20" uuid="1435d113-5a2a-4c7e-9832-cb6b43428b3b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ sul c.c n° 14063986 (Cap. 327/2);]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="210" height="20" uuid="ef0a9abe-727e-49a3-bd2d-f2c22e0da6a4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vista la ricevuta del versamento di ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="160" width="90" height="20" uuid="23bd5212-97e5-465a-9e0b-47e5c51e8a7c"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA['€' + $F{importoVersamento2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="160" width="110" height="20" uuid="5cb5ebbd-5166-47b6-8c5d-43484159d280"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ effettuato in data]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="160" width="80" height="20" uuid="7688e63e-ae12-4757-86e3-ee3cc1cd528f"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataVersamento2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="490" y="160" width="61" height="20" uuid="3eb0c6c4-1f60-44a3-ad31-6e1e4a1e3cc9"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ - con]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="40" height="20" uuid="a6c736a5-9366-42e9-be18-93cb8413b4df"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[codice]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="180" width="80" height="20" uuid="e3f45051-34d0-418a-9c56-f2235d029e3e"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codiceVersamento2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="180" width="290" height="20" uuid="53e0a514-22fc-4442-899e-c9998e8cd3ea"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ sul c.c n° 14063986 (Cap. 327/5);]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="250" width="550" height="50" uuid="7a2f7570-fa23-4f59-96cc-317f9cb68806"/>
+				<textElement markup="styled">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Che la ricadenza delle particelle di seguito specificate - nella Variante <style isBold='true'>" + $F{nomeVariante} + "</style>, approvata con D.D.R. n° <style isBold='true'>" + $F{numeroVariante} + "</style> così come modificato con D.D.G. 34DRU/2013, D.D.G./2013, D.D.G. 99/2014 - risulta:"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="310" width="551" height="50" uuid="b1132295-6325-4912-ac7e-c2ea78c6182c"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="listaRicadenze" uuid="a0abdc97-7a8e-4301-aaf7-e6820b3920c1">
+						<dataSourceExpression><![CDATA[$F{listaRicadenze}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="29" uuid="691348e5-75d3-412c-9348-72502613dfaa">
+						<jr:columnHeader style="Table_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="29" height="20" uuid="572bcd20-4329-4a2e-8fc8-979901802cad"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[N°]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="29" height="30" uuid="13346f74-157f-42eb-bd56-bfad9e029131"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="117" uuid="8a5549e7-8c78-4b53-b5c9-f4a596307e96">
+						<jr:columnHeader style="Table_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="117" height="20" uuid="bc29d280-d3e6-4fe2-9d7c-0b1eaa828472"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[Foglio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="117" height="30" uuid="30c89403-395a-44c9-b8ef-893649d0ae52"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{foglio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="117" uuid="1de715fb-4d03-4b00-a949-6f65287d6e55">
+						<jr:columnHeader style="Table_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="117" height="20" uuid="2da33ba7-9a58-4a12-a66d-a0ea40830c00"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[Particelle]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="117" height="30" uuid="76772fc0-2543-403a-9f64-8d723adb5677"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{particelle}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="288" uuid="9bb045fd-c67d-4a5e-84f7-c9c0df1fb80b">
+						<jr:columnHeader style="Table_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="288" height="20" uuid="f8680a75-b577-41af-abfe-5bec40c379e1"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[Ricadenze]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight">
+								<reportElement x="0" y="0" width="288" height="30" uuid="9a066214-1d07-48dc-9af8-da21801f5dd5"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial"/>
+									<paragraph leftIndent="5" rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ricadenza}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="200" width="150" height="20" uuid="d7693f5f-7117-4937-b55b-a05687d6ff6c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vista la ricevuta del modello F23]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="200" width="90" height="20" uuid="d13e46d7-2c61-4533-989b-6722747cb1dd"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codiceModelloF23}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="240" y="200" width="110" height="20" uuid="5b41fe97-f17d-404b-ac73-a513d64425e9"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ effettuato in data]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="350" y="200" width="80" height="20" uuid="070d4a20-7637-4d59-a90a-63b40048f54d"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataModelloF23}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="379" height="20" uuid="6dcd2f6b-74f7-4181-b661-182a8be10eb7">
+					<printWhenExpression><![CDATA[$F{listaVincoliPiano} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Che le suddette particelle sono interessate dal senguente vincolo di Piano:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="20" width="550" height="20" uuid="44a588a4-09aa-45c6-aa54-f2ca33722fdc">
+					<printWhenExpression><![CDATA[$F{listaVincoliPiano} != null]]></printWhenExpression>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="listaVincoliPiano" uuid="a95f34c9-59cf-4ca4-920b-9a4b73e471b5">
+						<dataSourceExpression><![CDATA[$F{listaVincoliPiano}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="550">
+						<textField>
+							<reportElement x="0" y="0" width="550" height="20" uuid="595dc72f-b238-4de6-b1dd-b2f2a4e13f8b"/>
+							<textElement markup="styled">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA["<style isBold='true'>" + $F{string} + "</style>"]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{listaStabili} != null || $F{listaNonStabili} != null || $F{pianoPaesaggistico} != null]]></printWhenExpression>
+			<staticText>
+				<reportElement x="0" y="0" width="280" height="20" uuid="73c35af6-b0d9-4ee7-8c30-efa52c01f70a">
+					<printWhenExpression><![CDATA[$F{listaStabili} != null || $F{listaNonStabili} != null || $F{pianoPaesaggistico} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Che, inoltre, le soggette particelle ricadono:]]></text>
+			</staticText>
+		</band>
+		<band height="40">
+			<printWhenExpression><![CDATA[$F{listaStabili} != null]]></printWhenExpression>
+			<textField>
+				<reportElement x="0" y="0" width="550" height="40" uuid="0385423a-76aa-437c-bfef-ba3f5c4ecf8d">
+					<printWhenExpression><![CDATA[$F{listaStabili} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{listaStabili} + " all'INTERNO delle aree classificate come Stabili sulla base della carta della suscettività all'urbanizzazione allegata al vigente P.R.G."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="40">
+			<printWhenExpression><![CDATA[$F{listaNonStabili} != null]]></printWhenExpression>
+			<textField>
+				<reportElement x="0" y="0" width="550" height="40" uuid="5f4d0511-8096-48cb-ad16-4bb883294506">
+					<printWhenExpression><![CDATA[$F{listaNonStabili} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{listaNonStabili} + " all'INTERNO delle aree classificate come Non Stabili sulla base della carta della suscettività all'urbanizzazione allegata al vigente P.R.G."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="120">
+			<printWhenExpression><![CDATA[$F{pianoPaesaggistico} != null]]></printWhenExpression>
+			<textField>
+				<reportElement x="0" y="0" width="550" height="70" uuid="d4073852-eca8-4cf1-a9d9-b096e8a0807f">
+					<printWhenExpression><![CDATA[$F{pianoPaesaggistico} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pianoPaesaggistico} + " del Piano Paesaggistico riguardante l'intero territorio dell'Ambito 9 ricadente nella provincia di Messina, approvato con Decreto Assessoriale n° 6682 del 29/12/2016 (supplemento ordinario n° 2 della G.U.R.S. n° 13 del 31/03/2017), dove le previsioni sono comunque cogenti, ai sensi dell'art.145 comma 3, del Decreto Legislativo 42/04 e s.m.i., per gli strumenti urbanistici dei comuni interessati e sono immediatamente prevalenti sulle disposizioni difformi eventualmente contenute negli strumenti urbanistici, stabilendo norme di salvaguardia applicabili in attesa dell'adeguamento degli stessi."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="90" width="550" height="30" uuid="20be2e0f-f564-4e72-a780-e10001c7b08f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Si puntualizza infine che, la Commissione Urbanistica Comunale nella seduta del 29/05/2018, ha stabilito che le zone ricadenti nelle aree con livello di tutela 2 e 3 hanno perso totalmente l'eventuale capacità edificatoria.]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<componentElement>
+				<reportElement x="0" y="0" width="550" height="20" uuid="2fa56c59-693d-4e92-927a-08a397bdd637"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="listaIntersezioniAggiuntive" uuid="dc518e0a-1c7b-43d3-a531-a4c9aaee0472">
+						<dataSourceExpression><![CDATA[$F{listaIntersezioniAggiuntive}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="550">
+						<textField>
+							<reportElement x="0" y="0" width="550" height="20" uuid="f28e739c-1b2d-48e0-a54e-508191f95cd8"/>
+							<textElement markup="styled">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{string}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="30">
+			<printWhenExpression><![CDATA[$F{listaInApf} != null]]></printWhenExpression>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="550" height="30" uuid="83b0d4b7-0375-4bde-af11-abaa1e2e7787">
+					<printWhenExpression><![CDATA[$F{listaInApf} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Che, ai sensi e per gli effetti dell'art. 10 della Legge 21 novembre 2000, n° 353 e s.m.i., " + $F{listaInApf} + "all'interno dei perimetri individuati dal ''Catasto dei soprassuoli percorsi dal fuoco'';"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="30">
+			<printWhenExpression><![CDATA[$F{listaInApfAltriAnni} != null]]></printWhenExpression>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="550" height="30" uuid="173d00c0-0c72-460f-9b1a-d9fb36a011ed">
+					<printWhenExpression><![CDATA[$F{listaInApfAltriAnni} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["All'interno dei perimetri individuati dal ''Catasto dei soprassuoli percorsi dal fuoco'' nelle: " + $F{listaInApfAltriAnni} + " NON ricadono le particelle selezionate."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="40">
+			<printWhenExpression><![CDATA[$F{listaFuoriApfParticelle} != null && $F{listaFuoriApfAnni} != null]]></printWhenExpression>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="550" height="30" uuid="1b20d07c-f087-4aed-88dc-94cc5f17eadd">
+					<printWhenExpression><![CDATA[$F{listaFuoriApfParticelle} != null && $F{listaFuoriApfAnni} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le restanti particelle " + $F{listaFuoriApfParticelle} + " NON ricadono all'interno dei perimetri individuati dal ''Catasto dei soprassuoli percosi dal fuoco'' per gli anni " + $F{listaFuoriApfAnni}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="100">
+			<componentElement>
+				<reportElement x="0" y="60" width="550" height="40" uuid="543e7d15-b76d-481d-a5bc-fa89b19a8189">
+					<printWhenExpression><![CDATA[$F{indiciVariante} == true]]></printWhenExpression>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="listaDocumenti" uuid="ffca23fa-746e-4067-8861-1543c5d2b984">
+						<dataSourceExpression><![CDATA[$F{listaDocumenti}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="40" width="550">
+						<textField>
+							<reportElement x="0" y="0" width="550" height="20" uuid="78fefd83-788f-4523-bf8b-b6abeec0f30b"/>
+							<textElement>
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA["-" + $F{nomeDocumento}]]></textFieldExpression>
+						</textField>
+						<componentElement>
+							<reportElement x="10" y="20" width="540" height="20" uuid="227d45a8-a5de-4007-a3f2-9866896a1bbc"/>
+							<jr:list printOrder="Vertical">
+								<datasetRun subDataset="listaCodiciIndici" uuid="e58495de-2fcc-456d-b22d-dfd6f00d1c6c">
+									<dataSourceExpression><![CDATA[$F{listaCodiciIndici}]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="20" width="540">
+									<textField>
+										<reportElement x="0" y="0" width="50" height="20" uuid="4b485590-3336-40ba-aef7-f167c6b64933"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{codice} + ":"]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement x="50" y="0" width="490" height="20" uuid="0d71851c-ec5e-4245-ba80-06fa3b1f72a9"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{articoloElenco}]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="0" width="550" height="30" uuid="7670d3a9-efbd-4f28-b943-2526856d8f64">
+					<printWhenExpression><![CDATA[$F{riferimentoVisuraCatastale} != null && $F{dataVisuraCatastale} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Che le predette particelle sono presenti nelle Visure n° <style isBold='true'>" +$F{riferimentoVisuraCatastale} + "</style> del <style isBold='true'>" + $F{dataVisuraCatastale} + "</style> delle Mappe Catastali <style isBold='true'>" + $F{riferimentoMappaCatastale} + "</style> che si allegano."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="550" height="30" uuid="5fca47f7-4f2e-446d-a5d1-a17bc76f7454">
+					<printWhenExpression><![CDATA[$F{indiciVariante} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Si attesta inoltre che gli indici e i parametri urbanistici delle suddette zone sono riportate negli stralci dei seguenti documenti:"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="280">
+			<staticText>
+				<reportElement x="0" y="0" width="550" height="40" uuid="434b1ac4-f1e8-42ab-96ce-5db8a35dce79"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Il presente attestato, ove utilizzato da professionista abilitato ai fini di progettazione edilizia, non esime il medesimo dalle responsabilità in relazione alla puntale individuazione ed alla quantificazione delle superfici ricadenti nelle zone territoriali del P.R.G. interessate dall'intervento edilizio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="550" height="40" uuid="377c441c-e763-4f8e-a8d4-a99421ee6a02"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Si ricorda infine che - ai sensi dell'art. 40 c.2 del D.P.R. 28 dicembre 2000, n° 445 così come modificato ed integrato dall'art. 15 ldella Legge 12 novembre 2011, n° 183 - "il presente certificato NON può essere prodotto agli organi della pubblica amministrazione né ai privati gestori di pubblici servizi".]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="550" height="30" uuid="cb70bc8c-be5a-41ac-8d2d-8b3738448e1d"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Si rilascia il presente - su richiesta della Ditta sopracitata- ai sensi dell'art. 30 del D.P.R. 6 giugno 2001, n° 380 - in carta legale per qualsiasi uso ove convenga.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="160" width="200" height="20" uuid="2446b72c-c2bf-4820-9839-ee92f3ac3310"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[IL RESPONSABILE DEL SERVIZIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="160" width="200" height="20" uuid="7e6aaf3a-afc6-42dd-80a9-42b5e928ec7f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[IL RESPONSABILE PIAN. TERRITORIALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="180" width="200" height="20" uuid="4afe7af6-a9a2-4445-b518-9ea194402195"/>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Arial" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Geom. Umberto COSTA)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="180" width="200" height="20" uuid="dd817e9c-9412-4255-80d3-3df8e2f2a8c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Arial" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Arch. Santi DENARO)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="240" width="200" height="20" uuid="acfe8c29-a6ef-4b23-aa30-b8dde7bfbb84"/>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font fontName="Arial" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Ing. Antonio CARDIA)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="220" width="200" height="20" uuid="3721c5ef-a120-4b9a-8fbd-00823c0f3c72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[IL DIRIGENTE DEL DIPARTIMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="50" height="20" uuid="8d202fe0-bec8-46ff-a875-b99d547b3980"/>
+				<textElement>
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Messina, li]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="50" y="130" width="100" height="20" uuid="f39f5ee5-f752-45ea-b16d-9a3739ed357f"/>
+				<textElement>
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="430" y="0" width="60" height="20" uuid="e4c8607b-758d-4214-b368-de2419ea0431"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="490" y="0" width="60" height="20" uuid="3cacb0f2-dbc5-4a3a-b1e3-6c927ee277d1"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" di " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

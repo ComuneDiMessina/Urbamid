@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+  <name>JOB_IMPORT_CATASTO</name>
+    <description>JOB per l&apos;import dei dati catastali (plain) in base dati.</description>
+    <extended_description/>
+    <job_version>1.0</job_version>
+    <job_status>1</job_status>
+  <directory>&#47;</directory>
+  <created_user>-</created_user>
+  <created_date>2019&#47;12&#47;05 09:53:50.655</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2019&#47;12&#47;05 09:53:50.655</modified_date>
+    <parameters>
+        <parameter>
+            <name>BASE_JOB_DATA_DIRECTORY</name>
+            <default_value>/opt/IMPORT_CATASTO/DATI/ATTUALITA</default_value>
+            <description>Indica la directory a partire dalla quale vengono ricavati i percorsi per raggiungere i dati sulla quale agisce la procedura.</description>
+        </parameter>
+        <parameter>
+            <name>BASE_JOB_DIRECTORY</name>
+            <default_value>/opt/IMPORT_CATASTO/GEOKETTLE_JOB_FILE</default_value>
+            <description>Path della directory di base dove si trovano i JOB e le TRASFORMATE</description>
+        </parameter>
+        <parameter>
+            <name>DATABASE_HOST</name>
+            <default_value>localhost</default_value>
+            <description>Hostname del database</description>
+        </parameter>
+        <parameter>
+            <name>DATABASE_NAME</name>
+            <default_value>dbUrbamid</default_value>
+            <description>Nome del database</description>
+        </parameter>
+        <parameter>
+            <name>DATABASE_PASSWORD</name>
+            <default_value>postgres</default_value>
+            <description>Password del database</description>
+        </parameter>
+        <parameter>
+            <name>DATABASE_PORT</name>
+            <default_value>5432</default_value>
+            <description>Numero di porto del database</description>
+        </parameter>
+        <parameter>
+            <name>DATABASE_USER</name>
+            <default_value>postgres</default_value>
+            <description>Username utente database</description>
+        </parameter>
+        <parameter>
+            <name>JOB_IMPORT_TYPE</name>
+            <default_value>ATTUALITA</default_value>
+            <description>Indica se il job è per l'import di una ATTUALITA (dati completi ad una certa data) oppure un AGGIORNAMENTO.</description>
+        </parameter>
+    </parameters>
+  <connection>
+    <name>CONNESSIONE_URBAMID</name>
+    <server>${DATABASE_HOST}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${DATABASE_NAME}</database>
+    <port>${DATABASE_PORT}</port>
+    <username>${DATABASE_USER}</username>
+    <password>${DATABASE_PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${DATABASE_PORT}</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+    <slaveservers>
+    </slaveservers>
+  <logconnection/>
+  <logtable/>
+  <size_limit_lines/>
+   <use_batchid>N</use_batchid>
+   <pass_batchid>N</pass_batchid>
+   <use_logfield>N</use_logfield>
+   <shared_objects_file/>
+  <entries>
+    <entry>
+      <name>START</name>
+      <description>Entry speciali</description>
+      <type>SPECIAL</type>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>43</yloc>
+      </entry>
+    <entry>
+      <name>TRONCA TABELLE</name>
+      <description>Troncare tabelle</description>
+      <type>TRUNCATE_TABLES</type>
+      <connection>CONNESSIONE_URBAMID</connection>
+      <arg_from_previous>N</arg_from_previous>
+      <fields>
+        <field>
+          <name>&quot;u_cat_deduzioni_particella&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_identificativi_unita_immobiliari&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_indirizzi_unita_immobiliari&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_particelle_catastali&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_porzioni_particella&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_riserve_particella&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_riserve_unita_immobiliare&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_soggetti&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_titolarita&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_unita_immobiliare&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_utilita_unita_immobiliare&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_planimetrie&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+        <field>
+          <name>&quot;u_cat_planimetrie_image&quot;</name>
+          <schemaname>public</schemaname>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>344</xloc>
+      <yloc>491</yloc>
+      </entry>
+    <entry>
+      <name>TRANCA TABELLE FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Il TRUNCATE delle tabelle è FALLITO!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>147</xloc>
+      <yloc>491</yloc>
+      </entry>
+    <entry>
+      <name>JOB CONFIGURAZIONE PARAMETRI</name>
+      <description>Job</description>
+      <type>JOB</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;JOB_CONFIGURAZIONE_PARAMETRI.kjb</filename>
+      <jobname>JOB_CONFIGURAZIONE_PARAMETRI</jobname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>166</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT CATASTO TERMINATO CON SUCCESSO!</name>
+      <description>Successo</description>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>431</xloc>
+      <yloc>1162</yloc>
+      </entry>
+    <entry>
+      <name>TRONCA TABELLE OK</name>
+      <description>Scrivi nel log</description>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>Le tabelle sono state troncate con successo.</logmessage>
+      <loglevel>Minimal</loglevel>
+      <logsubject>TRONCA TABELLE OK</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>340</xloc>
+      <yloc>592</yloc>
+      </entry>
+    <entry>
+      <name>JOB CONFIGURAZIONE PARAMETRI FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Non è stato possibile settare correttamente i parametri di configurazione!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>146</xloc>
+      <yloc>166</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT FABBRICATI</name>
+      <description>Job</description>
+      <type>JOB</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;JOB_IMPORT_FABBRICATI.kjb</filename>
+      <jobname>JOB_IMPORT_FABBRICATI</jobname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>428</xloc>
+      <yloc>723</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT FABBRICATI FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Il JOB di import dei fabbricati è fallito!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>150</xloc>
+      <yloc>725</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT TERRENI</name>
+      <description>Job</description>
+      <type>JOB</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;JOB_IMPORT_TERRENI.kjb</filename>
+      <jobname>JOB_IMPORT_TERRENI</jobname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>429</xloc>
+      <yloc>839</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT TERRENI FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Il JOB di import dei terreni è fallito!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>145</xloc>
+      <yloc>836</yloc>
+      </entry>
+    <entry>
+      <name>VALUTA SE TRONCARE LE TABELLE</name>
+      <description>Valutazione semplice</description>
+      <type>SIMPLE_EVAL</type>
+      <valuetype>variable</valuetype>
+      <fieldname/>
+      <variablename>${JOB_IMPORT_TYPE}</variablename>
+      <fieldtype>string</fieldtype>
+      <mask/>
+      <comparevalue>ATTUALITA</comparevalue>
+      <minvalue/>
+      <maxvalue/>
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>430</xloc>
+      <yloc>381</yloc>
+      </entry>
+    <entry>
+      <name>LOG AGGIORNAMENTO NON TRONCARE</name>
+      <description>Scrivi nel log</description>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>Job di aggiornamento, non occorre troncare le tabelle.</logmessage>
+      <loglevel>Minimal</loglevel>
+      <logsubject>TRUNCATE TABLE</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>526</xloc>
+      <yloc>589</yloc>
+      </entry>
+    <entry>
+      <name>JOB ELABORA RPM</name>
+      <description>Job</description>
+      <type>JOB</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;JOB_ELABORA_RPM.kjb</filename>
+      <jobname>JOB_ELABORA_RPM</jobname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>430</xloc>
+      <yloc>1062</yloc>
+      </entry>
+    <entry>
+      <name>JOB ELABORA RPM FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Il JOB di elaborazione dei file .RPM è fallito!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>148</xloc>
+      <yloc>1063</yloc>
+      </entry>
+    <entry>
+      <name>RIMUOVI FILE TEMPORANEI ATTUALITA ED AGGIORNAMENTO</name>
+      <description>Cancella i file</description>
+      <type>DELETE_FILES</type>
+      <arg_from_previous>N</arg_from_previous>
+      <include_subfolders>Y</include_subfolders>
+      <fields>
+        <field>
+          <name>${ROOT_PATH}&#47;DATI&#47;ATTUALITA${FAB_DIRECTORY_MANAGE_PATH}</name>
+          <filemask/>
+        </field>
+        <field>
+          <name>${ROOT_PATH}&#47;DATI&#47;AGGIORNAMENTO${FAB_DIRECTORY_MANAGE_PATH}</name>
+          <filemask/>
+        </field>
+        <field>
+          <name>${ROOT_PATH}&#47;DATI&#47;ATTUALITA${TER_DIRECTORY_MANAGE_PATH}</name>
+          <filemask/>
+        </field>
+        <field>
+          <name>${ROOT_PATH}&#47;DATI&#47;AGGIORNAMENTO${TER_DIRECTORY_MANAGE_PATH}</name>
+          <filemask/>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>267</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT PLANIMETRIE</name>
+      <description>Job</description>
+      <type>JOB</type>
+      <filename>file:&#47;&#47;${BASE_JOB_DIRECTORY}&#47;JOB_IMPORT_PLANIMETRIE.kjb</filename>
+      <jobname>JOB_IMPORT_PLANIMETRIE</jobname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>939</yloc>
+      </entry>
+    <entry>
+      <name>JOB IMPORT PLANIMETRIE FALLITO</name>
+      <description>Interrompi job</description>
+      <type>ABORT</type>
+      <message>Il JOB di import dei planimetrie è fallito!</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>148</xloc>
+      <yloc>942</yloc>
+      </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>TRONCA TABELLE</from>
+      <to>TRANCA TABELLE FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRONCA TABELLE</from>
+      <to>TRONCA TABELLE OK</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB CONFIGURAZIONE PARAMETRI</from>
+      <to>JOB CONFIGURAZIONE PARAMETRI FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT FABBRICATI</from>
+      <to>JOB IMPORT FABBRICATI FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT FABBRICATI</from>
+      <to>JOB IMPORT TERRENI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT TERRENI</from>
+      <to>JOB IMPORT TERRENI FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>VALUTA SE TRONCARE LE TABELLE</from>
+      <to>TRONCA TABELLE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>JOB CONFIGURAZIONE PARAMETRI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>JOB CONFIGURAZIONE PARAMETRI</from>
+      <to>RIMUOVI FILE TEMPORANEI ATTUALITA ED AGGIORNAMENTO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>RIMUOVI FILE TEMPORANEI ATTUALITA ED AGGIORNAMENTO</from>
+      <to>VALUTA SE TRONCARE LE TABELLE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>VALUTA SE TRONCARE LE TABELLE</from>
+      <to>LOG AGGIORNAMENTO NON TRONCARE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB ELABORA RPM</from>
+      <to>JOB ELABORA RPM FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TRONCA TABELLE OK</from>
+      <to>JOB IMPORT FABBRICATI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>LOG AGGIORNAMENTO NON TRONCARE</from>
+      <to>JOB IMPORT FABBRICATI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB ELABORA RPM</from>
+      <to>JOB IMPORT CATASTO TERMINATO CON SUCCESSO!</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT TERRENI</from>
+      <to>JOB IMPORT PLANIMETRIE</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT PLANIMETRIE</from>
+      <to>JOB ELABORA RPM</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>JOB IMPORT PLANIMETRIE</from>
+      <to>JOB IMPORT PLANIMETRIE FALLITO</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+    <notepad>
+      <note>Imposta i parametri del job presenti nella tabella u_cat_parametri_geokettle</note>
+      <xloc>484</xloc>
+      <yloc>162</yloc>
+      <width>422</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Rimozione di tutti i file temporanei nella cartella di gestione (MANAGE) per i dati CENSUARI (non vengono alterati quelli geografici)</note>
+      <xloc>487</xloc>
+      <yloc>260</yloc>
+      <width>716</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Valuto se troncare le tabelle (nel caso delle attualità vengono troncate, viceversa no)</note>
+      <xloc>483</xloc>
+      <yloc>372</yloc>
+      <width>474</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Elabora il file RPM che incapsula informazioni sull&apos;estrazione e li scrive nella tabella u_cat_aggiornamenti</note>
+      <xloc>513</xloc>
+      <yloc>1064</yloc>
+      <width>581</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Elabora i file .TER, .TIT e .SOG relativi ai TERRENI</note>
+      <xloc>493</xloc>
+      <yloc>833</yloc>
+      <width>272</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Elabora i file .FAB, .TIT e .SOG relativi ai FABBRICATI</note>
+      <xloc>493</xloc>
+      <yloc>718</yloc>
+      <width>283</width>
+      <heigth>23</heigth>
+    </notepad>
+    <notepad>
+      <note>Elabora i file *DC.DAT PL\*DC.DAT IMAGE relativi alle planimetrie</note>
+      <xloc>496</xloc>
+      <yloc>930</yloc>
+      <width>353</width>
+      <heigth>23</heigth>
+    </notepad>
+  </notepads>
+</job>

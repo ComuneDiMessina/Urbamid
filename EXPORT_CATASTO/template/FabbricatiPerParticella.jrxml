@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FabbricatiPerNominativo" pageWidth="1000" pageHeight="595" orientation="Landscape" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95c5cfbe-550c-4277-a544-2922ffbcc92e">
+	<import value="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<subDataset name="ParticelleDataSet" uuid="4bbf8027-bc75-4726-b51f-0dbc61500e12">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="foglio" class="java.lang.String"/>
+		<field name="numero" class="java.lang.String"/>
+		<field name="proprietariDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	</subDataset>
+	<subDataset name="ProprietariDataSet" uuid="cdfec4fd-b477-46d0-9ff2-fdb36499a339">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="nome" class="java.lang.String"/>
+		<field name="cognome" class="java.lang.String"/>
+		<field name="citta" class="java.lang.String"/>
+		<field name="dataNascita" class="java.lang.String"/>
+		<field name="codiceFiscale" class="java.lang.String"/>
+		<field name="diritto" class="java.lang.String"/>
+		<field name="tipoSoggetto" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="particelleDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="proprietariDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="titolo" class="java.lang.String"/>
+	<field name="tipologiaEstrazione" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="415" y="0" width="130" height="20" uuid="625ecc6f-b350-4112-ae61-8d0311b5c1d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITTA' DI MESSINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="20" width="270" height="20" uuid="360c4d42-a5fe-41ba-a992-7d8988c09246"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[DIPARTIMENTO POLITICHE DEL TERRITORIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="40" width="270" height="20" uuid="74bc0904-4d81-481f-b100-648d8cb36d41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Sistema Informativo Territoriale Comunale]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="345" y="60" width="270" height="20" forecolor="#FF0400" uuid="7ac4bf4c-e2fc-4799-b8d0-02f81dab0aed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titolo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="345" y="80" width="270" height="20" uuid="14953c97-3d81-4853-a0c2-bdcfa09296fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[ELENCO FABBRICATI PER PARTICELLA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="680" y="0" width="280" height="40" uuid="29f05a53-bfdd-44c4-9d17-36f67483cafc"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipologiaEstrazione}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="960" height="80" uuid="1fe43d0a-f448-42c1-8532-ed1a5674f48f"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="ParticelleDataSet" uuid="1ebc1b20-dcb5-40f4-b8d4-beb0a844e687">
+						<dataSourceExpression><![CDATA[$F{particelleDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="80" width="960">
+						<staticText>
+							<reportElement x="0" y="10" width="50" height="20" uuid="4db9061f-cf74-4242-bfcf-793421fcdcd5"/>
+							<textElement>
+								<font fontName="Arial" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Foglio]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="50" y="10" width="50" height="20" uuid="d5ec2e06-dafb-4472-a370-dc28e16b6148"/>
+							<textElement>
+								<font fontName="Arial" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Numero]]></text>
+						</staticText>
+						<textField>
+							<reportElement x="0" y="30" width="50" height="20" forecolor="#FF0400" uuid="00ad4f48-097a-42f9-92ab-b6706817d14d"/>
+							<textElement>
+								<font fontName="Arial" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{foglio}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="50" y="30" width="50" height="20" forecolor="#FF0400" uuid="70e0c813-f09e-44c4-894d-0a46ab08d1c9"/>
+							<textElement>
+								<font fontName="Arial" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+						</textField>
+						<componentElement>
+							<reportElement x="0" y="50" width="960" height="30" uuid="5f1b69fb-9078-4043-ae95-b8d73abbf487"/>
+							<jr:list printOrder="Vertical">
+								<datasetRun subDataset="ProprietariDataSet" uuid="079cc5b7-3b47-4e1c-9d85-b7d8ad8959d9">
+									<dataSourceExpression><![CDATA[$F{proprietariDataSource}]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="30" width="960">
+									<textField isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="160" height="20" uuid="cbafb65d-3c6f-4b53-a86d-b5748336e18d"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{cognome}]]></textFieldExpression>
+									</textField>
+									<textField isBlankWhenNull="true">
+										<reportElement x="160" y="0" width="140" height="20" uuid="395a538f-93ab-400f-85e3-045426631fb7"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+									</textField>
+									<textField isBlankWhenNull="true">
+										<reportElement x="360" y="0" width="100" height="20" uuid="7d2adc1d-0b41-4113-9b93-91ac30fc27ac"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{citta}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement x="300" y="0" width="50" height="20" uuid="7d2031df-f9a5-47c1-8847-fc38bb1c7a93">
+											<printWhenExpression><![CDATA[$F{tipoSoggetto}.equalsIgnoreCase( "P" )]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Right">
+											<font fontName="Arial"/>
+										</textElement>
+										<text><![CDATA[nato a]]></text>
+									</staticText>
+									<textField isBlankWhenNull="true">
+										<reportElement x="500" y="0" width="80" height="20" uuid="b8ac62a9-3f29-48ba-b93a-699f7d27b443"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{dataNascita}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement x="460" y="0" width="30" height="20" uuid="96ebe6e2-0557-458a-85dc-db0b5066fdb0">
+											<printWhenExpression><![CDATA[$F{tipoSoggetto}.equalsIgnoreCase( "P" )]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Right">
+											<font fontName="Arial"/>
+										</textElement>
+										<text><![CDATA[il]]></text>
+									</staticText>
+									<textField isBlankWhenNull="true">
+										<reportElement x="630" y="0" width="103" height="20" uuid="0f8cf38d-bf78-4934-b157-a9c9e90b4429"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{codiceFiscale}]]></textFieldExpression>
+									</textField>
+									<textField isBlankWhenNull="true">
+										<reportElement x="800" y="0" width="160" height="20" uuid="454babf2-8d33-4d1a-8809-b54a6b3a2b5f"/>
+										<textElement>
+											<font fontName="Arial"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{diritto}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement x="733" y="0" width="56" height="20" uuid="e1ef8928-5f4e-46d8-a88b-fc9588fbb76d"/>
+										<textElement textAlignment="Right">
+											<font fontName="Arial"/>
+										</textElement>
+										<text><![CDATA[diritto]]></text>
+									</staticText>
+									<staticText>
+										<reportElement x="580" y="0" width="40" height="20" uuid="9ed9d7e7-47d5-4d47-bd7a-2b8827cdbd33">
+											<printWhenExpression><![CDATA[$F{codiceFiscale} != "" && $F{tipoSoggetto}.equalsIgnoreCase( "G" )]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Right"/>
+										<text><![CDATA[P.Iva]]></text>
+									</staticText>
+									<staticText>
+										<reportElement x="580" y="0" width="40" height="20" uuid="0ff3548e-f966-47f0-b6c9-416ef65662a7">
+											<printWhenExpression><![CDATA[$F{codiceFiscale} != "" && $F{tipoSoggetto}.equalsIgnoreCase( "P" )]]></printWhenExpression>
+										</reportElement>
+										<textElement textAlignment="Right">
+											<font fontName="Arial"/>
+										</textElement>
+										<text><![CDATA[C.F.]]></text>
+									</staticText>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+						<line>
+							<reportElement x="0" y="4" width="960" height="1" uuid="8bb69d61-a0dd-4f36-a91f-5981834ca92f">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</reportElement>
+						</line>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="20" uuid="717d1da3-aec1-4187-8ca0-65c41ac931a3"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="60" y="0" width="60" height="20" uuid="a9191193-0a5e-48e6-bd14-601732bad18c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" di " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+     	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>[%d{dd-MMMyyyy HH:mm:ss.SSS}] [%5p] [%X{SUBSYSTEM_ID}][%X{TRANSIT_ID}][%X{USER_ID}] [%C{25}] %m %n</pattern>
+		</encoder>
+    </appender>
+
+    <logger name="org.apache.commons.*" level="WARN" />
+    <logger name="org.springframework.*" level="WARN" />
+    <logger name="org.springframework.transaction" level="WARN" />
+    <logger name="ch.qos.logback.*" level="WARN" />
+    <logger name="it.eng.tz.*" level="DEBUG" />
+
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">
+			%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName}	--- [%15.15t] %-40.40c{1.} : %m%n%ex
+		</Property>
+		<Property name="LOG_DIR">
+			${log.filters.path}logs
+		</Property>
+		<Property name="COMPRESSED_LOG_DIR">
+			${log.filters.path}compressed_logs
+		</Property>
+	</Properties>
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT"
+			follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<RollingFile name="RollingFileAppender"
+			fileName="${LOG_DIR}/catasto.services.log"
+			filePattern="${COMPRESSED_LOG_DIR}/catasto.services.%d{dd-MMM}.log.gz"
+			ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+		<Async name="AsyncRollingFileAppender">
+			<AppenderRef ref="RollingFileAppender" />
+		</Async>
+		<Async name="AsyncConsoleAppender">
+			<AppenderRef ref="ConsoleAppender" />
+		</Async>		
+	</Appenders>
+	<Loggers>
+		<Logger name="it.eng" level="DEBUG" additivity="false">
+			<AppenderRef ref="AsyncConsoleAppender" />
+			<!--<AppenderRef ref="AsyncRollingFileAppender" />-->
+		</Logger>	
+		<Logger name="org.springframework.security" level="INFO" additivity="false">
+			<AppenderRef ref="AsyncConsoleAppender" />
+			<!--<AppenderRef ref="AsyncRollingFileAppender" />-->
+		</Logger>			
+		<Root level="DEBUG">
+			<AppenderRef ref="AsyncConsoleAppender" />
+			<AppenderRef ref="AsyncRollingFileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,9 @@
+[ 
+	{"name": "Albergo (RICE-ALBE)", "code": "001"}, 
+	{"name": "Campeggio (RICE-CAMP)", "code": "002"}, 
+	{"name": "Ostello (RICE-OSTT)", "code": "003"}, 
+	{"name": "Casa di riposo (RICE-CRIP)", "code": "004"}, 
+	{"name": "Carcere (RICE-CARC)", "code": "005"}, 
+	{"name": "Istituto religioso (RICE-ISRE)", "code": "006"}, 
+	{"name": "Altro (RICE-ALTR)", "code": "007"}
+]
