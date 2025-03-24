@@ -7,4 +7,4 @@ urbamid_bo_ms-jediliza    			  :sorgenti microservizio calcolo oneri
 urbamid_bo_script         			  :modello dati
 urbamid_bo_modelli-bo    			    :template moduli backoffice      
 urbamid_bo_modelli-fo    			    :template moduli frontoffice   
-ambiente.tar.001-ambiente.tar.032 :ambiente configurato  
+ambiente.tar.001-ambiente.tar.032 :ambiente configurato, unico tar scompattato in più files tar  
