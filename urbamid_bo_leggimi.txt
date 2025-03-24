@@ -1,9 +1,10 @@
 Distinta file tar:                 
-urbamid_bo_urbamid-fe     			:sorgenti FrontEnd urbamid
-urbamid_bo_lib-fe                   :librerie necessarie a FrontEnd urbamid
-urbamid_bo_urbamid-be   		    :sorgenti BackEnd urbamid
-urbamid_bo_lib-be                   :librerie necessarie a BackEnd urbamid
-urbamid_bo_ms-jediliza    			:sorgenti microservizio calcolo oneri
-urbamid_bo_script         			:modello dati
-urbamid_bo_modelli-bo    			:template moduli backoffice      
-urbamid_bo_modelli-fo    			:template moduli frontoffice   
+urbamid_bo_urbamid-fe     			  :sorgenti FrontEnd urbamid
+urbamid_bo_lib-fe                 :librerie necessarie a FrontEnd urbamid
+urbamid_bo_urbamid-be   		      :sorgenti BackEnd urbamid
+urbamid_bo_lib-be                 :librerie necessarie a BackEnd urbamid
+urbamid_bo_ms-jediliza    			  :sorgenti microservizio calcolo oneri
+urbamid_bo_script         			  :modello dati
+urbamid_bo_modelli-bo    			    :template moduli backoffice      
+urbamid_bo_modelli-fo    			    :template moduli frontoffice   
+ambiente.tar.001-ambiente.tar.032 :ambiente configurato  
